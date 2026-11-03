@@ -18,8 +18,6 @@ declare module 'lucide-react' {
   export const Cpu: LucideIcon;
   export const Layers: LucideIcon;
   export const ArrowUpRight: LucideIcon;
-  export const Github: LucideIcon;
-  export const Linkedin: LucideIcon;
   export const Globe: LucideIcon;
   export const FileText: LucideIcon;
   export const Sparkles: LucideIcon;
@@ -52,6 +50,9 @@ declare module 'lucide-react' {
   export const CheckCircle2: LucideIcon;
   export const Compass: LucideIcon;
   export const Box: LucideIcon;
+  export const GraduationCap: LucideIcon;
+  export const Calendar: LucideIcon;
+  export const CloudSun: LucideIcon;
 
   // Fallback for any other lucide icon
   const icon: LucideIcon;
