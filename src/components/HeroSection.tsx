@@ -20,15 +20,15 @@ export function HeroSection({
   const { profile } = PORTFOLIO_DATA;
 
   return (
-    <section id="home" className="py-12 sm:py-16 lg:py-20 border-b border-white/10 relative">
-      {/* Cinematic Telemetry Header Strip */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-6 mb-8 border-b border-white/10 font-mono text-xs text-[#9499A3]">
+    <section id="home" className="py-10 sm:py-14 lg:py-18 border-b border-white/10 relative">
+      {/* Top Telemetry Strip */}
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-5 mb-8 border-b border-white/10 font-mono text-xs text-[#9499A3]">
         <div className="flex items-center gap-2">
           <span className="px-2.5 py-1 bg-[#D4FF00]/15 border border-[#D4FF00]/60 text-[#D4FF00] font-bold tracking-wider">
             PORTFOLIO DESIGN HACKATHON 2026 {'//'} SKILLINF
           </span>
           <span className="hidden md:inline text-[#9499A3] border-l border-white/15 pl-3">
-            SECTOR: APPLIED SOFTWARE ENGINEERING
+            SECTOR: APPLIED SOFTWARE SYSTEMS
           </span>
         </div>
         <div className="flex items-center gap-2.5">
@@ -40,57 +40,53 @@ export function HeroSection({
         </div>
       </div>
 
-      {/* Main Hero Split Grid (50/50 Desktop Composition) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      {/* Main Hero Split Grid: 50% Editorial Punch + 50% Massive 3D WebGL Canvas */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
         {/* Left Editorial Narrative Column (6 Cols) */}
         <div className="lg:col-span-6 space-y-6">
           <div className="space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 text-xs font-mono text-[#D4FF00]">
               <Terminal className="w-3.5 h-3.5" />
-              <span>{profile.name.toUpperCase()} • {profile.academicStatus}</span>
+              <span>{profile.name.toUpperCase()} • B.TECH CSE (2023–2027)</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-[52px] font-black tracking-tight text-[#F4F4F0] leading-[1.05]">
-              Engineering Practical{' '}
+            <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-black tracking-tight text-[#F4F4F0] leading-[1.04]">
+              Full-Stack Architect.{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4FF00] via-[#F4F4F0] to-[#00F0FF]">
-                Full-Stack Systems
-              </span>
-              , Algorithmic Rigor & Applied AI Workflows.
+                Algorithmic Rigor.
+              </span>{' '}
+              Applied AI Systems.
             </h1>
           </div>
 
           <p className="text-base sm:text-lg text-[#9499A3] leading-relaxed max-w-xl">
-            {profile.subheadline}
+            Computer Science undergraduate at United Institute of Technology, Prayagraj.
+            Building resilient MERN & Next.js web applications, solving 300+ Java DSA problems,
+            and shipping applied deep learning pipelines.
           </p>
 
-          {/* Verified Engineering Spec Badges */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
-            <div className="p-3.5 bg-[#111318] border border-white/10 hover:border-[#D4FF00]/40 transition-colors">
-              <div className="font-mono text-[10px] text-[#9499A3] uppercase">01 // Web Architecture</div>
-              <div className="font-mono text-sm font-bold text-[#F4F4F0] mt-1">
-                MERN + Next.js
-              </div>
+          {/* High-Impact Stat Badges (Visual Numbers, Not Text Walls) */}
+          <div className="grid grid-cols-3 gap-3 pt-1">
+            <div className="p-3.5 bg-[#0E1015] border border-white/10 hover:border-[#D4FF00]/50 transition-colors">
+              <div className="text-2xl sm:text-3xl font-black text-[#D4FF00] font-mono">300+</div>
+              <div className="text-[11px] font-mono text-[#9499A3] mt-0.5">Java DSA Solved</div>
             </div>
-            <div className="p-3.5 bg-[#111318] border border-white/10 hover:border-[#D4FF00]/40 transition-colors">
-              <div className="font-mono text-[10px] text-[#9499A3] uppercase">02 // Algorithmic Rigor</div>
-              <div className="font-mono text-sm font-bold text-[#D4FF00] mt-1">
-                300+ Java DSA
-              </div>
+            <div className="p-3.5 bg-[#0E1015] border border-white/10 hover:border-[#00F0FF]/50 transition-colors">
+              <div className="text-2xl sm:text-3xl font-black text-[#00F0FF] font-mono">MERN</div>
+              <div className="text-[11px] font-mono text-[#9499A3] mt-0.5">Full-Stack Core</div>
             </div>
-            <div className="p-3.5 bg-[#111318] border border-white/10 hover:border-[#D4FF00]/40 transition-colors">
-              <div className="font-mono text-[10px] text-[#9499A3] uppercase">03 // Deep Learning</div>
-              <div className="font-mono text-sm font-bold text-[#00F0FF] mt-1">
-                EfficientNet + CV
-              </div>
+            <div className="p-3.5 bg-[#0E1015] border border-white/10 hover:border-white/40 transition-colors">
+              <div className="text-2xl sm:text-3xl font-black text-[#F4F4F0] font-mono">1st</div>
+              <div className="text-[11px] font-mono text-[#9499A3] mt-0.5">SocProS Research</div>
             </div>
           </div>
 
-          {/* Magnetic-Style Action CTAs */}
+          {/* Action CTAs */}
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <button
               type="button"
               onClick={onExploreWork}
-              className="px-6 py-3.5 bg-[#D4FF00] text-[#0A0B0E] font-mono text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center gap-2 hover:bg-[#e2ff4d] transition-all cursor-pointer shadow-[0_0_24px_rgba(212,255,0,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="px-7 py-3.5 bg-[#D4FF00] text-[#0A0B0E] font-mono text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center gap-2 hover:bg-[#e2ff4d] transition-all cursor-pointer shadow-[0_0_24px_rgba(212,255,0,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
               <span>Explore My Work</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -107,7 +103,7 @@ export function HeroSection({
           </div>
 
           {/* Direct Verified Social Anchors */}
-          <div className="pt-2 flex flex-wrap items-center gap-5 text-xs font-mono text-[#9499A3]">
+          <div className="pt-1 flex flex-wrap items-center gap-5 text-xs font-mono text-[#9499A3]">
             <a
               href={profile.links.github}
               target="_blank"

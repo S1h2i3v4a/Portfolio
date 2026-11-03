@@ -14,15 +14,15 @@ export function AboutSection() {
   };
 
   return (
-    <section id="about" className="py-16 sm:py-24 border-b border-white/10 relative">
+    <section id="about" className="py-16 sm:py-22 border-b border-white/10 relative">
       {/* Editorial Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
         <div>
           <div className="font-mono text-xs text-[#D4FF00] uppercase tracking-widest mb-2 flex items-center gap-2">
             <span className="w-2 h-2 bg-[#D4FF00]" />
-            <span>01 {'//'} IDENTITY & ENGINEERING PHILOSOPHY</span>
+            <span>01 {'//'} IDENTITY & ENGINEERING ETHOS</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-bold text-[#F4F4F0] tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-black text-[#F4F4F0] tracking-tight">
             Built Through Implementation, Not Passive Theory.
           </h2>
         </div>
@@ -31,44 +31,71 @@ export function AboutSection() {
         </div>
       </div>
 
-      {/* Narrative + Philosophy Quote Split */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
-        <div className="lg:col-span-7 bg-[#111318] border border-white/10 p-6 sm:p-8 space-y-4 relative overflow-hidden">
-          <div className="pointer-events-none absolute top-0 right-0 w-32 h-32 bg-[#D4FF00]/5 blur-2xl" />
+      {/* High-Impact Stat Callout Strip */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="p-4 bg-[#0E1015] border border-white/10 flex items-start gap-3">
+          <div className="p-2.5 bg-[#151922] border border-white/10 text-[#D4FF00]">
+            <Cpu className="w-5 h-5" />
+          </div>
+          <div>
+            <div className="text-xl font-bold font-mono text-[#F4F4F0]">300+ Problems</div>
+            <div className="text-xs text-[#9499A3] mt-0.5">Striver A2Z Java DSA Roadmap & LLD</div>
+          </div>
+        </div>
 
+        <div className="p-4 bg-[#0E1015] border border-white/10 flex items-start gap-3">
+          <div className="p-2.5 bg-[#151922] border border-white/10 text-[#00F0FF]">
+            <Activity className="w-5 h-5" />
+          </div>
+          <div>
+            <div className="text-xl font-bold font-mono text-[#F4F4F0]">SocProS 2026 Paper</div>
+            <div className="text-xs text-[#9499A3] mt-0.5">EfficientNet Skin Severity Research Submission</div>
+          </div>
+        </div>
+
+        <div className="p-4 bg-[#0E1015] border border-white/10 flex items-start gap-3">
+          <div className="p-2.5 bg-[#151922] border border-white/10 text-[#D4FF00]">
+            <Layers className="w-5 h-5" />
+          </div>
+          <div>
+            <div className="text-xl font-bold font-mono text-[#F4F4F0]">MERN + Next.js</div>
+            <div className="text-xs text-[#9499A3] mt-0.5">Aggregation Pipelines & Resilient REST APIs</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Narrative + Philosophy Quote Split */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-10">
+        <div className="lg:col-span-7 bg-[#111318] border border-white/10 p-6 sm:p-8 space-y-4 relative overflow-hidden">
           <h3 className="font-mono text-xs uppercase tracking-wider text-[#D4FF00] flex items-center gap-2">
             <Terminal className="w-3.5 h-3.5" />
-            <span>DEVELOPER ARCHITECTURE DOSSIER</span>
+            <span>ENGINEERING DOSSIER</span>
           </h3>
 
           <p className="text-sm sm:text-base text-[#F4F4F0] leading-relaxed">
-            I am <strong className="text-[#D4FF00] font-semibold">{profile.name}</strong>, an
-            undergraduate in Computer Science & Engineering at {profile.institution}. My engineering
-            ethos is grounded in disciplined execution: combining foundational algorithmic problem-solving
-            in Java with end-to-end full-stack web applications and applied computer vision systems.
+            I am <strong className="text-[#D4FF00] font-semibold">{profile.name}</strong>, a
+            Computer Science & Engineering undergraduate at {profile.institution}. My journey centers
+            on combining algorithmic rigor with practical full-stack web architectures and applied deep learning pipelines.
           </p>
 
           <p className="text-sm sm:text-base text-[#9499A3] leading-relaxed">
-            Rather than relying on superficial tutorials, I focus on building verifiable systems:
-            engineering multi-stage OpenCV preprocessing pipelines with EfficientNet deep learning
-            for dermatological lesion classification, designing high-throughput MongoDB aggregation
-            queries for real-time financial telemetry, and consistently solving 300+ DSA problems in Java.
+            I prioritize shipping working systems: automating OpenCV morphological artifact filtering for dermatological lesion classification, designing performant MongoDB aggregations for real-time finance ledgers, and practicing disciplined data structures in Java.
           </p>
 
           <div className="pt-2 flex flex-wrap gap-2 text-xs font-mono">
-            <span className="px-2.5 py-1 bg-[#0A0B0E] border border-white/15 text-[#F4F4F0]">
-              ✓ STRIVER A2Z DSA SHEET
+            <span className="px-2.5 py-1 bg-[#0A0B0E] border border-white/15 text-[#D4FF00]">
+              ✓ Striver A2Z Java DSA
+            </span>
+            <span className="px-2.5 py-1 bg-[#0A0B0E] border border-white/15 text-[#00F0FF]">
+              ✓ EfficientNet + OpenCV
             </span>
             <span className="px-2.5 py-1 bg-[#0A0B0E] border border-white/15 text-[#F4F4F0]">
-              ✓ SOCPROS CONFERENCE SUBMISSION
-            </span>
-            <span className="px-2.5 py-1 bg-[#0A0B0E] border border-white/15 text-[#F4F4F0]">
-              ✓ SMART INDIA HACKATHON
+              ✓ SIH & Eurogrip Hackathons
             </span>
           </div>
         </div>
 
-        <div className="lg:col-span-5 bg-[#151922] border border-[#D4FF00]/40 p-6 sm:p-8 flex flex-col justify-between relative">
+        <div className="lg:col-span-5 bg-[#151922] border border-[#D4FF00]/40 p-6 sm:p-8 flex flex-col justify-between">
           <div className="space-y-4">
             <div className="flex items-center justify-between font-mono text-xs text-[#9499A3]">
               <span className="text-[#D4FF00] font-bold">OPERATIONAL PRINCIPLE</span>
@@ -76,17 +103,17 @@ export function AboutSection() {
             </div>
 
             <blockquote className="text-base sm:text-lg font-medium text-[#F4F4F0] leading-relaxed border-l-2 border-[#D4FF00] pl-4">
-              “{philosophyQuote}”
+              &ldquo;{philosophyQuote}&rdquo;
             </blockquote>
           </div>
 
           <div className="pt-6 mt-6 border-t border-white/10 grid grid-cols-2 gap-4 font-mono text-xs">
             <div>
-              <span className="text-[#9499A3] block">CORE PROBLEM SOLVING</span>
+              <span className="text-[#9499A3] block">PROBLEM SOLVING</span>
               <span className="text-[#F4F4F0] font-semibold">Java 17+ / DSA / LLD</span>
             </div>
             <div>
-              <span className="text-[#9499A3] block">SYSTEM ARCHITECTURE</span>
+              <span className="text-[#9499A3] block">STACK</span>
               <span className="text-[#D4FF00] font-semibold">MERN / Next.js / Python</span>
             </div>
           </div>
@@ -98,7 +125,7 @@ export function AboutSection() {
         {aboutPillars.map((pillar) => (
           <div
             key={pillar.id}
-            className="bg-[#111318] border border-white/10 hover:border-[#D4FF00]/60 p-6 sm:p-7 transition-all flex flex-col justify-between group"
+            className="bg-[#111318] border border-white/10 hover:border-[#D4FF00]/60 p-6 transition-all flex flex-col justify-between group"
           >
             <div className="space-y-4">
               <div className="flex items-center justify-between">
@@ -119,7 +146,7 @@ export function AboutSection() {
             </div>
 
             <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs">
-              <span className="text-[#9499A3]">VERIFIED SCOPE</span>
+              <span className="text-[#9499A3]">SCOPE</span>
               <span className="text-[#D4FF00] font-semibold">{pillar.metrics}</span>
             </div>
           </div>
