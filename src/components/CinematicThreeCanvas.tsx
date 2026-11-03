@@ -19,73 +19,82 @@ export function CinematicThreeCanvas({ reducedMotion }: CinematicThreeCanvasProp
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [webGlSupported, setWebGlSupported] = useState<boolean>(true);
 
+  // Synchronize state with refs for 60fps render loop without triggering full WebGL context rebuilds
+  const renderModeRef = useRef<'quantum' | 'wireframe' | 'lattice'>('quantum');
+  const speedMultiplierRef = useRef<number>(1);
+  const isPausedRef = useRef<boolean>(false);
+
+  useEffect(() => {
+    renderModeRef.current = renderMode;
+  }, [renderMode]);
+
+  useEffect(() => {
+    speedMultiplierRef.current = speedMultiplier;
+  }, [speedMultiplier]);
+
+  useEffect(() => {
+    isPausedRef.current = isPaused;
+  }, [isPaused]);
+
   useEffect(() => {
     if (reducedMotion) return;
     const container = containerRef.current;
     const canvas = canvasRef.current;
     if (!container || !canvas) return;
 
-    // Check WebGL availability safely
+    let width = container.clientWidth || 600;
+    let height = container.clientHeight || 500;
+
+    // 1. Scene, Camera & WebGLRenderer with try-catch guard
+    let renderer: THREE.WebGLRenderer;
+    let scene: THREE.Scene;
+    let camera: THREE.PerspectiveCamera;
+
     try {
-      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-      if (!gl) {
-        setWebGlSupported(false);
-        return;
-      }
-    } catch {
+      scene = new THREE.Scene();
+      scene.fog = new THREE.FogExp2(0x07090d, 0.018);
+
+      camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
+      camera.position.set(0.15, 0, 9.8);
+
+      renderer = new THREE.WebGLRenderer({
+        canvas,
+        antialias: true,
+        alpha: true,
+        powerPreference: 'high-performance'
+      });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(typeof window !== 'undefined' ? window.devicePixelRatio : 1, 2));
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.3;
+    } catch (err) {
+      console.warn('WebGL context initialization caught error, switching to vector blueprint:', err);
       setWebGlSupported(false);
       return;
     }
 
-    let width = container.clientWidth;
-    let height = container.clientHeight;
-
-    // 1. Scene, Camera, Renderer
-    const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x07090d, 0.018);
-
-    const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
-    // Position core slightly off-center (offset x slightly for editorial balance)
-    camera.position.set(0.15, 0, 9.8);
-
-    const renderer = new THREE.WebGLRenderer({
-      canvas,
-      antialias: true,
-      alpha: true,
-      powerPreference: 'high-performance'
-    });
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.3;
-
     // 2. Cinematic Precision Lighting
-    // Ambient light - deep cool tone
     const ambientLight = new THREE.AmbientLight(0x0e1520, 2.4);
     scene.add(ambientLight);
 
-    // Directional Cyan lighting for cool depth
     const cyanKeyLight = new THREE.DirectionalLight(0x68e7ff, 3.8);
     cyanKeyLight.position.set(-8, 7, 7);
     scene.add(cyanKeyLight);
 
-    // Directional Lime rim lighting
     const limeRimLight = new THREE.DirectionalLight(0xc7ff3e, 3.2);
     limeRimLight.position.set(8, -6, 5);
     scene.add(limeRimLight);
 
-    // Core point light
     const corePointLight = new THREE.PointLight(0xc7ff3e, 2.8, 14);
     corePointLight.position.set(0, 0, 0);
     scene.add(corePointLight);
 
     // 3. Central Computational Artifact Hierarchy
     const rootGroup = new THREE.Group();
-    // Subtle off-center position for balanced layout
     rootGroup.position.set(0.12, 0, 0);
     scene.add(rootGroup);
 
-    // --- Core Component A: Faceted Central Icosahedron ---
+    // Core Component A: Faceted Central Icosahedron
     const innerGeom = new THREE.IcosahedronGeometry(1.4, 2);
     const innerMat = new THREE.MeshStandardMaterial({
       color: 0x090d14,
@@ -98,7 +107,7 @@ export function CinematicThreeCanvas({ reducedMotion }: CinematicThreeCanvasProp
     const innerCoreMesh = new THREE.Mesh(innerGeom, innerMat);
     rootGroup.add(innerCoreMesh);
 
-    // --- Core Component B: Polyhedral Exoskeleton Edge Cage ---
+    // Core Component B: Polyhedral Exoskeleton Edge Cage
     const exoGeom = new THREE.OctahedronGeometry(2.2, 0);
     const exoEdges = new THREE.EdgesGeometry(exoGeom);
     const exoLineMat = new THREE.LineBasicMaterial({
@@ -110,7 +119,7 @@ export function CinematicThreeCanvas({ reducedMotion }: CinematicThreeCanvasProp
     const exoCage = new THREE.LineSegments(exoEdges, exoLineMat);
     rootGroup.add(exoCage);
 
-    // --- Core Component C: Layered Transparent Cyan Shell ---
+    // Core Component C: Layered Transparent Cyan Shell
     const shellMat = new THREE.MeshPhysicalMaterial({
       color: 0x071520,
       emissive: 0x68e7ff,
@@ -125,7 +134,7 @@ export function CinematicThreeCanvas({ reducedMotion }: CinematicThreeCanvasProp
     const shellMesh = new THREE.Mesh(exoGeom, shellMat);
     rootGroup.add(shellMesh);
 
-    // --- Core Component D: Interactive Shockwave Pulse Ring ---
+    // Core Component D: Interactive Shockwave Pulse Ring
     const pulseRingGeom = new THREE.RingGeometry(1.6, 1.68, 64);
     const pulseRingMat = new THREE.MeshBasicMaterial({
       color: 0xc7ff3e,
@@ -136,7 +145,7 @@ export function CinematicThreeCanvas({ reducedMotion }: CinematicThreeCanvasProp
     const pulseRing = new THREE.Mesh(pulseRingGeom, pulseRingMat);
     rootGroup.add(pulseRing);
 
-    // 4. Multiple Independent Orbital Rings (Concentric Gimbal Array)
+    // 4. Concentric Gimbal Orbital Rings
     const ringMat1 = new THREE.MeshStandardMaterial({
       color: 0x111923,
       emissive: 0x68e7ff,
@@ -171,7 +180,7 @@ export function CinematicThreeCanvas({ reducedMotion }: CinematicThreeCanvasProp
     rootGroup.add(ring2);
     rootGroup.add(ring3);
 
-    // 5. Small Swarm of Orbital Dust Particles (Depth Simulation)
+    // 5. Orbital Dust Particle Swarm
     const particleCount = 280;
     const particleGeom = new THREE.BufferGeometry();
     const particlePositions = new Float32Array(particleCount * 3);
@@ -216,8 +225,10 @@ export function CinematicThreeCanvas({ reducedMotion }: CinematicThreeCanvasProp
 
     const handlePointerMove = (e: MouseEvent) => {
       const rect = container.getBoundingClientRect();
-      const normX = ((e.clientX - rect.left) / width - 0.5) * 2;
-      const normY = ((e.clientY - rect.top) / height - 0.5) * 2;
+      const currentW = width || 600;
+      const currentH = height || 500;
+      const normX = ((e.clientX - rect.left) / currentW - 0.5) * 2;
+      const normY = ((e.clientY - rect.top) / currentH - 0.5) * 2;
 
       if (isUserDragging) {
         const deltaX = (e.clientX - dragStartX) * 0.008;
@@ -227,19 +238,14 @@ export function CinematicThreeCanvas({ reducedMotion }: CinematicThreeCanvasProp
         dragStartX = e.clientX;
         dragStartY = e.clientY;
       } else {
-        // Pointer-responsive parallax: camera shifts opposite for genuine depth
         targetCameraX = 0.15 + normX * 1.2;
         targetCameraY = -normY * 0.9;
-
-        // Subtle object tilt toward cursor
         targetRotationY = normX * 0.65;
         targetRotationX = normY * 0.45;
       }
     };
 
     const handlePointerDown = (e: MouseEvent) => {
-      // Prevent default on canvas to avoid text-selection drag behavior
-      e.preventDefault();
       isUserDragging = true;
       setIsDragging(true);
       dragStartX = e.clientX;
@@ -251,7 +257,6 @@ export function CinematicThreeCanvas({ reducedMotion }: CinematicThreeCanvasProp
       setIsDragging(false);
     };
 
-    // Click triggers an energy shockwave ring pulse
     const handleClick = () => {
       pulseScale = 1.0;
       pulseOpacity = 0.95;
@@ -263,38 +268,37 @@ export function CinematicThreeCanvas({ reducedMotion }: CinematicThreeCanvasProp
     window.addEventListener('mouseup', handlePointerUp);
 
     const handleResize = () => {
-      if (!container) return;
-      width = container.clientWidth;
-      height = container.clientHeight;
+      if (!container || !renderer || !camera) return;
+      width = container.clientWidth || 600;
+      height = container.clientHeight || 500;
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
     };
     window.addEventListener('resize', handleResize);
 
-    // 7. Render Loop
+    // 7. Render Loop reading state from refs
     let animationFrameId: number;
     const clock = new THREE.Clock();
 
     const animate = () => {
       const elapsed = clock.getElapsedTime();
-      const mult = isPaused ? 0 : speedMultiplier;
+      const currentMode = renderModeRef.current;
+      const mult = isPausedRef.current ? 0 : speedMultiplierRef.current;
 
-      // Smooth inertia damping for object rotation
+      // Damping
       currentRotationX += (targetRotationX - currentRotationX) * 0.06;
       currentRotationY += (targetRotationY - currentRotationY) * 0.06;
 
       rootGroup.rotation.x = currentRotationX;
       rootGroup.rotation.y = currentRotationY + elapsed * 0.14 * mult;
 
-      // Camera spatial parallax inertia
       currentCameraX += (targetCameraX - currentCameraX) * 0.05;
       currentCameraY += (targetCameraY - currentCameraY) * 0.05;
       camera.position.x = currentCameraX;
       camera.position.y = currentCameraY;
       camera.lookAt(rootGroup.position);
 
-      // Independent multi-axis gimbal rotations at varying speeds
       ring1.rotation.z += 0.008 * mult;
       ring1.rotation.x += 0.005 * mult;
 
@@ -304,12 +308,10 @@ export function CinematicThreeCanvas({ reducedMotion }: CinematicThreeCanvasProp
       ring3.rotation.x += 0.006 * mult;
       ring3.rotation.y += 0.009 * mult;
 
-      // Core pulse
       const pulse = 1 + Math.sin(elapsed * 2.4) * 0.07;
       innerCoreMesh.scale.set(pulse, pulse, pulse);
       corePointLight.intensity = 2.2 + Math.sin(elapsed * 3.2) * 0.8;
 
-      // Animate shockwave ring
       if (pulseOpacity > 0.01) {
         pulseScale += 0.065;
         pulseOpacity *= 0.94;
@@ -319,12 +321,11 @@ export function CinematicThreeCanvas({ reducedMotion }: CinematicThreeCanvasProp
         pulseRingMat.opacity = 0;
       }
 
-      // Rotate particle swarm
       particleSystem.rotation.y = elapsed * 0.035 * mult;
       particleSystem.rotation.z = elapsed * 0.02 * mult;
 
-      // Visual Mode Material Swapping: 3 genuinely distinct states
-      if (renderMode === 'wireframe') {
+      // Mode updates via material swapping without re-initializing renderer
+      if (currentMode === 'wireframe') {
         innerMat.wireframe = true;
         shellMat.wireframe = true;
         innerMat.color.setHex(0x68e7ff);
@@ -332,7 +333,7 @@ export function CinematicThreeCanvas({ reducedMotion }: CinematicThreeCanvasProp
         exoLineMat.color.setHex(0xc7ff3e);
         ringMat1.wireframe = true;
         ringMat2.wireframe = true;
-      } else if (renderMode === 'lattice') {
+      } else if (currentMode === 'lattice') {
         innerMat.wireframe = true;
         shellMat.wireframe = false;
         shellMat.opacity = 0.12;
@@ -342,7 +343,6 @@ export function CinematicThreeCanvas({ reducedMotion }: CinematicThreeCanvasProp
         ringMat1.wireframe = false;
         ringMat2.wireframe = false;
       } else {
-        // QUANTUM mode (Default)
         innerMat.wireframe = false;
         shellMat.wireframe = false;
         shellMat.opacity = 0.45;
@@ -368,7 +368,7 @@ export function CinematicThreeCanvas({ reducedMotion }: CinematicThreeCanvasProp
       window.removeEventListener('mouseup', handlePointerUp);
       renderer.dispose();
     };
-  }, [reducedMotion, renderMode, speedMultiplier, isPaused]);
+  }, [reducedMotion]);
 
   const handleResetView = () => {
     setSpeedMultiplier(1);

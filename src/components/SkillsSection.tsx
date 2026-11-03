@@ -233,6 +233,8 @@ export function SkillsSection() {
       ? nodes
       : nodes.filter((n) => n.category === activeCategory);
 
+  const activeNode = selectedNode || nodes[0];
+
   return (
     <section
       id="skills"
@@ -391,16 +393,16 @@ export function SkillsSection() {
               <div className="font-mono text-[10px] text-[#C7FF3E] uppercase tracking-wider">
                 NODE TELEMETRY
               </div>
-              <h3 className="text-2xl font-bold text-[#F4F7FB] mt-0.5">{selectedNode.name}</h3>
+              <h3 className="text-2xl font-bold text-[#F4F7FB] mt-0.5">{activeNode.name}</h3>
             </div>
             <span
               className={`px-2.5 py-0.5 font-mono text-[10px] uppercase font-bold border ${
-                selectedNode.isMajor
+                activeNode.isMajor
                   ? 'bg-[#C7FF3E]/10 border-[#C7FF3E]/40 text-[#C7FF3E]'
                   : 'bg-[#68E7FF]/10 border-[#68E7FF]/40 text-[#68E7FF]'
               }`}
             >
-              {selectedNode.isMajor ? 'CORE NODE' : 'FOUNDATION'}
+              {activeNode.isMajor ? 'CORE NODE' : 'FOUNDATION'}
             </span>
           </div>
 
@@ -409,7 +411,7 @@ export function SkillsSection() {
               ENGINEERING CONTEXT
             </div>
             <p className="text-sm text-[#E9EDF4] leading-relaxed bg-[#07090D] border border-white/[0.065] p-3.5">
-              {selectedNode.context}
+              {activeNode.context}
             </p>
           </div>
 
@@ -418,7 +420,7 @@ export function SkillsSection() {
               SYSTEM EXPLANATION
             </div>
             <p className="text-xs sm:text-sm text-[#929CAA] leading-relaxed">
-              {selectedNode.explanation}
+              {activeNode.explanation}
             </p>
           </div>
 
@@ -427,17 +429,17 @@ export function SkillsSection() {
               VERIFIED IMPLEMENTATION
             </div>
             <a
-              href={selectedNode.repo}
+              href={activeNode.repo}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-between p-3 bg-[#111923] border border-white/10 hover:border-[#C7FF3E] text-xs font-mono transition-colors group"
             >
               <div>
                 <div className="text-[#F4F7FB] font-semibold group-hover:text-[#C7FF3E] transition-colors">
-                  {selectedNode.projectTitle}
+                  {activeNode.projectTitle}
                 </div>
                 <div className="text-[#697483] text-[10px] mt-0.5 truncate max-w-[240px]">
-                  {selectedNode.repo.replace('https://', '')}
+                  {activeNode.repo.replace('https://', '')}
                 </div>
               </div>
               <ArrowUpRight className="w-4 h-4 text-[#929CAA] group-hover:text-[#C7FF3E] transition-colors" />

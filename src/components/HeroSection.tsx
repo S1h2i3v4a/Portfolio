@@ -1,10 +1,46 @@
 'use client';
 
 import React from 'react';
+import dynamic from 'next/dynamic';
 import { PORTFOLIO_DATA } from '@/data/portfolioData';
-import { CinematicThreeCanvas } from '@/components/CinematicThreeCanvas';
 import { GithubIcon, LinkedinIcon } from '@/components/Icons';
 import { ArrowUpRight, ArrowDown, Globe } from 'lucide-react';
+
+const CinematicThreeCanvas = dynamic(
+  () => import('@/components/CinematicThreeCanvas').then((mod) => mod.CinematicThreeCanvas),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-[480px] sm:h-[560px] lg:h-[640px] bg-[#07090D] border border-white/10 flex flex-col items-center justify-center p-6 text-center">
+        <svg
+          viewBox="0 0 400 320"
+          className="w-full max-w-[340px] h-auto stroke-[#C7FF3E]/80 fill-none animate-pulse"
+          aria-label="Loading Cinematic Artifact"
+        >
+          <circle cx="200" cy="160" r="120" stroke="rgba(255,255,255,0.06)" strokeDasharray="4 4" />
+          <circle cx="200" cy="160" r="90" stroke="rgba(104,231,255,0.25)" />
+          <polygon
+            points="200,50 300,105 300,215 200,270 100,215 100,105"
+            stroke="rgba(244,247,251,0.35)"
+            strokeWidth="1.2"
+          />
+          <polygon
+            points="200,80 270,160 200,240 130,160"
+            stroke="#C7FF3E"
+            strokeWidth="1.5"
+          />
+          <circle cx="200" cy="160" r="7" fill="#C7FF3E" />
+          <text x="215" y="164" fill="#C7FF3E" fontSize="10" fontFamily="monospace">
+            CORE / 01
+          </text>
+        </svg>
+        <p className="text-xs font-mono text-[#697483] mt-3 tracking-wider">
+          INITIALIZING WEBGL CORE...
+        </p>
+      </div>
+    )
+  }
+);
 
 interface HeroSectionProps {
   reducedMotion: boolean;
