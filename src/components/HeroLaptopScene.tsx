@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useMemo } from 'react';
+import React, { useEffect, useRef, useMemo, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Float, Stars, Text } from '@react-three/drei';
 import * as THREE from 'three';
@@ -657,6 +657,13 @@ function Scene({
 // -------------------------------------------------------------
 export default function HeroLaptopScene({ reducedMotion = false }: { reducedMotion?: boolean }) {
   const pointerRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [webglAvailable, setWebglAvailable] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('webgl2') || canvas.getContext('webgl');
+    setWebglAvailable(Boolean(context));
+  }, []);
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -675,17 +682,30 @@ export default function HeroLaptopScene({ reducedMotion = false }: { reducedMoti
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
     >
-      <Canvas
-        camera={{ position: [0, 1.1, 8.2], fov: 42 }}
-        dpr={[1, 1.5]}
-        gl={{
-          antialias: true,
-          alpha: true,
-          powerPreference: 'high-performance'
-        }}
-      >
-        <Scene pointerRef={pointerRef} reducedMotion={reducedMotion} />
-      </Canvas>
+      {webglAvailable ? (
+        <Canvas
+          camera={{ position: [0, 1.1, 8.2], fov: 42 }}
+          dpr={[1, 1.5]}
+          gl={{
+            antialias: true,
+            alpha: true,
+            powerPreference: 'high-performance'
+          }}
+        >
+          <Scene pointerRef={pointerRef} reducedMotion={reducedMotion} />
+        </Canvas>
+      ) : (
+        <div className="absolute inset-0 flex items-center justify-center bg-[#050a10]">
+          <div className="relative flex h-[min(70%,22rem)] w-[min(78%,28rem)] items-center justify-center border border-[#68e7ff]/25 bg-[#071722]/70 shadow-[0_0_60px_rgba(104,231,255,0.08)]">
+            <div className="absolute inset-5 border border-dashed border-white/10" />
+            <div className="relative text-center font-mono">
+              <div className="mx-auto mb-4 h-24 w-24 rounded-full border border-[#68e7ff]/60 shadow-[0_0_30px_rgba(104,231,255,0.25)]" />
+              <p className="text-[10px] tracking-[0.28em] text-[#c7ff3e]">3D CORE / FALLBACK</p>
+              <p className="mt-2 text-[10px] text-[#929caa]">VECTOR MODE ENABLED</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
