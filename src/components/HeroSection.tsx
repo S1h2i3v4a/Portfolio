@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 import dynamic from 'next/dynamic';
 import './hero.css';
 import { PORTFOLIO_DATA } from '@/data/portfolioData';
@@ -31,6 +32,32 @@ export function HeroSection({
   onWatchDemo
 }: HeroSectionProps) {
   const { profile } = PORTFOLIO_DATA;
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  useLayoutEffect(() => {
+    if (reducedMotion || !sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.from('.hero-animate', {
+        opacity: 0,
+        y: 24,
+        duration: 0.9,
+        stagger: 0.08,
+        ease: 'power3.out',
+        delay: 0.12
+      });
+      gsap.from('.hero-3d', {
+        opacity: 0,
+        scale: 0.94,
+        x: 28,
+        duration: 1.2,
+        ease: 'power3.out',
+        delay: 0.18
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [reducedMotion]);
 
   const handleExploreClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (onExploreWork) {
@@ -40,28 +67,30 @@ export function HeroSection({
   };
 
   return (
-    <section className="hero-section" id="home">
+    <section ref={sectionRef} className="hero-section" id="home">
       {/* Left Column: Hero Content & Typography */}
       <div className="hero-content">
-        <span className="hero-badge">
+        <span className="hero-badge hero-animate">
           <span className="hero-badge-dot" />
           AVAILABLE FOR OPPORTUNITIES
         </span>
 
-        <p className="hero-intro">HELLO, WORLD. I&apos;M</p>
+        <p className="hero-intro hero-animate">HELLO, WORLD. I&apos;M</p>
 
-        <h1>
+        <h1 className="hero-animate">
           Shivam<span>.</span>
+          <br />
+          Keshari
         </h1>
 
-        <h2>Full-Stack Developer &amp; Builder</h2>
+        <h2 className="hero-animate">Full-Stack Developer &amp; Builder</h2>
 
-        <p className="hero-description">
+        <p className="hero-description hero-animate">
           I turn ideas into intelligent, scalable digital experiences by combining thoughtful
           engineering with emerging technologies.
         </p>
 
-        <div className="hero-buttons">
+        <div className="hero-buttons hero-animate">
           <a
             href="#projects"
             onClick={handleExploreClick}
@@ -95,7 +124,7 @@ export function HeroSection({
         </div>
 
         {/* Quick Verified Links: Official Resume PDF, GitHub, LinkedIn */}
-        <div className="hero-links">
+        <div className="hero-links hero-animate">
           <a
             href="/resume.pdf"
             download="Shivam_Keshari_Resume.pdf"
@@ -136,7 +165,7 @@ export function HeroSection({
         </div>
 
         {/* Technical Ticker */}
-        <div className="hero-tech">
+        <div className="hero-tech hero-animate">
           JAVA <span>•</span> REACT <span>•</span> NEXT.JS <span>•</span> NODE.JS <span>•</span> AI / ML
         </div>
       </div>
