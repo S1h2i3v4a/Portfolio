@@ -45,13 +45,11 @@ const CinematicThreeCanvas = dynamic(
 interface HeroSectionProps {
   reducedMotion: boolean;
   onExploreWork: () => void;
-  onOpenResume: () => void;
 }
 
 export function HeroSection({
   reducedMotion,
-  onExploreWork,
-  onOpenResume
+  onExploreWork
 }: HeroSectionProps) {
   const { profile } = PORTFOLIO_DATA;
 
@@ -104,14 +102,16 @@ export function HeroSection({
               <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
             </button>
 
-            <button
-              type="button"
-              onClick={onOpenResume}
+            <a
+              href="/resume.pdf"
+              download="Shivam_Keshari_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-6 sm:px-7 py-3.5 bg-transparent hover:bg-white/[0.04] text-[#E9EDF4] border border-white/10 hover:border-[#C7FF3E] font-mono text-[13px] sm:text-sm font-medium uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C7FF3E]"
             >
               <span>DOWNLOAD RESUME</span>
               <ArrowDown className="w-4 h-4 text-[#C7FF3E]" />
-            </button>
+            </a>
           </div>
 
           {/* Row of Genuine Social Links */}

@@ -90,7 +90,6 @@ export default function Home() {
         <HeroSection
           reducedMotion={reducedMotion}
           onExploreWork={() => scrollToSection('projects')}
-          onOpenResume={() => setResumeModalOpen(true)}
         />
 
         <AboutSection />

@@ -1,0 +1,79 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 3874 >>
+stream
+BT /F2 20 Tf 50 740 Td (SHIVAM KESHARI) Tj ET
+BT /F1 11 Tf 50 722 Td (Full-Stack Developer & Applied AI Systems Builder) Tj ET
+BT /F1 9 Tf 50 706 Td (Prayagraj, UP, India | shivamkeshari1510@gmail.com | github.com/S1h2i3v4a | linkedin.com/in/shivam15keshari) Tj ET
+1 w 50 696 m 562 696 l S
+BT /F2 12 Tf 50 680 Td (EDUCATION) Tj ET
+0.5 w 50 674 m 562 674 l S
+BT /F2 10 Tf 50 658 Td (United Institute of Technology, Prayagraj) Tj ET
+BT /F1 10 Tf 430 658 Td (2023 - 2027) Tj ET
+BT /F1 9 Tf 50 644 Td (Bachelor of Technology in Computer Science & Engineering \(Final Year / Class of 2027\)) Tj ET
+BT /F2 12 Tf 50 622 Td (TECHNICAL SKILLS) Tj ET
+0.5 w 50 616 m 562 616 l S
+BT /F1 9.5 Tf 50 600 Td (Languages: Java \(300+ Solved DSA Problems, OOP\), Python, JavaScript \(ES6+\), TypeScript, SQL) Tj ET
+BT /F1 9.5 Tf 50 586 Td (Web & Backend: Next.js \(App Router\), React.js, Node.js, Express.js, MongoDB \(Aggregations\), REST APIs) Tj ET
+BT /F1 9.5 Tf 50 572 Td (AI & Computer Vision: OpenCV \(Morphological Filters, CLAHE, Otsu\), EfficientNet-B0, CNNs, Scikit-Learn) Tj ET
+BT /F1 9.5 Tf 50 558 Td (Developer Tools: Git, GitHub, Tailwind CSS v4, Three.js WebGL, Vercel, Render) Tj ET
+BT /F2 12 Tf 50 536 Td (RESEARCH & PUBLICATIONS) Tj ET
+0.5 w 50 530 m 562 530 l S
+BT /F2 10 Tf 50 514 Td (Skin Disease Classification and Severity Stage Identification) Tj ET
+BT /F1 9 Tf 420 514 Td (SocProS 2026 Submission) Tj ET
+BT /F1 9 Tf 50 500 Td (- Engineered an OpenCV preprocessing pipeline applying morphological black-hat filtering and CLAHE.) Tj ET
+BT /F1 9 Tf 50 488 Td (- Segmented dermatological lesions via adaptive Otsu ROI masking for noise-resistant feature extraction.) Tj ET
+BT /F1 9 Tf 50 476 Td (- Evaluated transfer learning on EfficientNet-B0 with multi-class diagnostic staging on benchmark PH2 dataset.) Tj ET
+BT /F1 9 Tf 50 464 Td (- Achieved 94.2% test-split classification accuracy and 96.15% precision on PH2 benchmark dataset.) Tj ET
+BT /F2 12 Tf 50 442 Td (ENGINEERING PROJECTS) Tj ET
+0.5 w 50 436 m 562 436 l S
+BT /F2 10 Tf 50 420 Td (Full-Stack Financial Expense Platform \(MERN\)) Tj ET
+BT /F1 9 Tf 460 420 Td (2025) Tj ET
+BT /F1 9 Tf 50 406 Td (- Architected REST API backend with Express.js and MongoDB aggregation pipelines \($match, $group\).) Tj ET
+BT /F1 9 Tf 50 394 Td (- Designed responsive React dashboard with monthly burn-rate calculations and category budget delta alerts.) Tj ET
+BT /F1 9 Tf 50 382 Td (- Implemented JWT bearer authentication and role-based data isolation.) Tj ET
+BT /F2 10 Tf 50 360 Td (Celebration & Event Planner Web Application) Tj ET
+BT /F1 9 Tf 460 360 Td (2025) Tj ET
+BT /F1 9 Tf 50 346 Td (- Built a centralized event coordination interface with interactive milestone status timelines in React.) Tj ET
+BT /F1 9 Tf 50 334 Td (- Engineered vendor allocation matrix and real-time budget reconciliation ledger.) Tj ET
+BT /F2 10 Tf 50 312 Td (Dynamic Mock API Generator & Weather Telemetry Client) Tj ET
+BT /F1 9 Tf 440 312 Td (2025 - 2026) Tj ET
+BT /F1 9 Tf 50 298 Td (- Developed configurable JSON schema generator and live HTTP error boundary simulator \(200, 429, 500\).) Tj ET
+BT /F1 9 Tf 50 286 Td (- Created responsive telemetry client fetching meteorological observations across multiple stations.) Tj ET
+BT /F2 12 Tf 50 264 Td (ACHIEVEMENTS & HACKATHONS) Tj ET
+0.5 w 50 258 m 562 258 l S
+BT /F1 9.5 Tf 50 242 Td (- Solved 300+ DSA problems in Java following Striver A2Z sheet across LeetCode and GeeksforGeeks.) Tj ET
+BT /F1 9.5 Tf 50 228 Td (- Smart India Hackathon \(SIH Internal\): Developed automated administrative and tracking workflows.) Tj ET
+BT /F1 9.5 Tf 50 214 Td (- Eurogrip Hackathon: Built data analytics prototypes under timed competitive constraints.) Tj ET
+BT /F1 9.5 Tf 50 200 Td (- Portfolio Design Hackathon 2026 \(Skillinf\): Built award-winning cinematic 3D Next.js engineering portfolio.) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000004177 00000 n 
+0000004247 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+4322
+%%EOF

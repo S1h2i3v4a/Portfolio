@@ -81,8 +81,9 @@ export function ContactSection() {
           </p>
 
           <p className="text-sm text-[#697483] leading-relaxed">
-            I am currently in my pre-final year of Computer Science (Class of 2027) and actively open
-            to software engineering internships, technical apprenticeships, and applied vision projects.
+            I am a Computer Science & Engineering undergraduate at United Institute of Technology, Prayagraj
+            (2023–2027 cohort), actively open to software engineering internships, technical apprenticeships,
+            and collaborative builds.
           </p>
 
           {/* Verified Social & Code Channels */}

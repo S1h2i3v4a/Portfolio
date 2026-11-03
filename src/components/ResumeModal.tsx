@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { PORTFOLIO_DATA } from '@/data/portfolioData';
-import { X, Printer } from 'lucide-react';
+import { X, Printer, Download } from 'lucide-react';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -40,18 +40,30 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
         </div>
 
         {/* Action Note */}
-        <div className="p-3.5 bg-[#07090D] border border-[#C7FF3E]/30 font-mono text-xs text-[#929CAA] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div className="p-3.5 bg-[#07090D] border border-[#C7FF3E]/30 font-mono text-xs text-[#929CAA] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <span>
             <strong className="text-[#C7FF3E]">OFFICIAL RECORD:</strong> PDF document for Shivam Keshari (B.Tech CSE 2023–2027).
           </span>
-          <button
-            type="button"
-            onClick={() => window.print()}
-            className="px-3.5 py-1.5 bg-[#C7FF3E] hover:bg-[#bcf82e] text-[#07090D] font-bold flex items-center gap-1.5 shrink-0 cursor-pointer transition-colors"
-          >
-            <Printer className="w-3.5 h-3.5 stroke-[2.5]" />
-            <span>Print / Save as PDF</span>
-          </button>
+          <div className="flex items-center gap-2">
+            <a
+              href="/resume.pdf"
+              download="Shivam_Keshari_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3.5 py-1.5 bg-[#C7FF3E] hover:bg-[#bcf82e] text-[#07090D] font-bold flex items-center gap-1.5 shrink-0 cursor-pointer transition-colors"
+            >
+              <Download className="w-3.5 h-3.5 stroke-[2.5]" />
+              <span>Download PDF</span>
+            </a>
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="px-3.5 py-1.5 border border-white/20 hover:border-white/40 text-[#E9EDF4] font-medium flex items-center gap-1.5 shrink-0 cursor-pointer transition-colors"
+            >
+              <Printer className="w-3.5 h-3.5" />
+              <span>Print Sheet</span>
+            </button>
+          </div>
         </div>
 
         {/* Structured One-Page Engineering Resume Sheet */}

@@ -68,8 +68,7 @@ export const PORTFOLIO_DATA = {
     links: {
       github: 'https://github.com/S1h2i3v4a',
       linkedin: 'https://www.linkedin.com/in/shivam15keshari/',
-      x: 'https://x.com/ShivamK11959343',
-      previousPortfolio: 'https://my-portfolio-od9l.onrender.com/'
+      x: 'https://x.com/ShivamK11959343'
     }
   },
 
@@ -181,26 +180,27 @@ export const PORTFOLIO_DATA = {
       featured: true,
       timeline: '2025 – 2026 (Research & Applied Build)',
       problem:
-        'Early visual screening of dermatological conditions often suffers from noisy clinical images (hair occlusion, uneven lighting) and lacks automated severity-stage estimation beyond basic binary classification.',
+        'Early visual screening of dermatological lesions often suffers from noisy clinical captures (hair occlusion, non-uniform illumination) and lacks automated severity-stage grading beyond basic binary classification.',
       solution:
-        'Engineered a multi-stage computer vision and deep learning pipeline combining OpenCV morphological preprocessing with an EfficientNet Convolutional Neural Network to classify dermatological lesions and grade their severity stage.',
-      intendedUsers: 'Clinical researchers, medical students, and point-of-care screening evaluation workflows.',
+        'Engineered a multi-stage diagnostic framework combining OpenCV morphological black-hat filtering and CLAHE contrast enhancement with GWO-enhanced lesion segmentation and an EfficientNet convolutional backbone. Evaluated on the clinical PH2 benchmark dataset (200 dermoscopic images: 80 Atypical Nevus, 80 Common Nevus, 40 Melanoma) under an 80/20 stratified test-split, achieving 94.2% test-set classification accuracy and 96.15% precision.',
+      intendedUsers: 'Clinical researchers, medical students, and automated point-of-care dermatological screening workflows.',
       keyFeatures: [
-        'Automated OpenCV preprocessing: black-hat morphological filtering for hair artifact removal and CLAHE contrast enhancement.',
-        'Lesion boundary segmentation to isolate regions of interest (ROI) from surrounding healthy skin.',
-        'Fine-tuned EfficientNet transfer learning model for multi-class skin condition classification.',
-        'Severity stage grading module evaluating lesion morphology, color variance, and affected area ratio.',
-        'Co-authored academic research paper submitted to the SocProS conference workflow.'
+        'OpenCV preprocessing: morphological black-hat filtering for artifact/hair removal and CLAHE contrast normalization.',
+        'Lesion boundary segmentation to isolate Regions of Interest (ROI) from surrounding epidermis.',
+        'High-dimensional texture feature extraction (GLCM + WLD) compressed via Autoencoder latent representation.',
+        'Fine-tuned EfficientNet convolutional network for multi-class classification (Melanoma vs. Nevi).',
+        'Empirically evaluated on the PH2 benchmark (80/20 stratified split) yielding 94.2% test accuracy and 96.15% precision.',
+        'Co-authored academic research paper prepared for the SocProS conference workflow.'
       ],
       techStack: ['Python', 'TensorFlow / Keras', 'EfficientNet', 'OpenCV', 'NumPy', 'Scikit-Learn', 'React UI'],
       technicalDecisions:
-        'Chose EfficientNet over standard ResNet50 due to compound scaling across depth, width, and resolution—achieving higher feature extraction fidelity on dermatological textures with significantly fewer parameters.',
+        'Employed an 80/20 stratified evaluation split on the PH2 dermoscopic dataset (200 clinical images). Pre-segmentation artifact cleaning combined with autoencoder latent reduction outperformed standard end-to-end raw image baselines, reaching 94.2% test accuracy with 96.15% precision.',
       architectureSteps: [
-        { step: '01', label: 'Raw Dermoscopic Input', detail: '224×224 RGB image ingestion & normalization' },
+        { step: '01', label: 'PH2 Dermoscopic Input', detail: '200 clinical images (Melanoma, Common & Atypical Nevi)' },
         { step: '02', label: 'OpenCV Artifact Filter', detail: 'Morphological Black-Hat + Telea Inpainting + CLAHE' },
-        { step: '03', label: 'ROI Lesion Masking', detail: 'Otsu thresholding & contour bounding extraction' },
-        { step: '04', label: 'EfficientNet Backbone', detail: 'MBConv blocks + Squeeze-and-Excitation attention' },
-        { step: '05', label: 'Dual Output Heads', detail: 'Disease Class Probability + Severity Stage (I–III)' }
+        { step: '03', label: 'GWO Lesion Masking', detail: 'Grey Wolf Optimized Region Growing & Otsu ROI isolation' },
+        { step: '04', label: 'Feature Extraction & CNN', detail: 'GLCM + WLD texture descriptors & EfficientNet backbone' },
+        { step: '05', label: 'Evaluation Metrics', detail: '94.2% Test Accuracy | 96.15% Precision (80/20 Split)' }
       ],
       githubUrl: 'https://github.com/S1h2i3v4a',
       liveUrl: null,
@@ -266,8 +266,8 @@ export const PORTFOLIO_DATA = {
         { step: '02', label: 'Task & Vendor Matrix', detail: 'Priority tagging & status state machine' },
         { step: '03', label: 'Budget Reconciliation', detail: 'Real-time allocation vs. committed cost delta' }
       ],
-      githubUrl: 'https://github.com/S1h2i3v4a',
-      liveUrl: 'https://my-portfolio-od9l.onrender.com/',
+      githubUrl: 'https://github.com/S1h2i3v4a/Event-planner',
+      liveUrl: null,
       interactiveType: 'event-sim'
     },
     {

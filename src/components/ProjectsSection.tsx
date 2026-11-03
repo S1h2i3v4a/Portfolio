@@ -234,18 +234,18 @@ export function ProjectsSection({ onOpenCaseStudy }: ProjectsSectionProps) {
                       </div>
 
                       {/* Experimental Validation Metric Strip */}
-                      <div className="grid grid-cols-3 gap-2 font-mono text-[11px] text-[#929CAA]">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 font-mono text-[11px] text-[#929CAA]">
                         <div className="p-2.5 bg-[#111923] border border-white/[0.065]">
-                          <div className="text-[10px] text-[#697483]">MODEL</div>
-                          <div className="text-[#F4F7FB] font-bold mt-0.5">EfficientNet-B0</div>
+                          <div className="text-[10px] text-[#697483]">EVAL DATASET</div>
+                          <div className="text-[#F4F7FB] font-bold mt-0.5">PH2 (200 Images, 80/20)</div>
                         </div>
                         <div className="p-2.5 bg-[#111923] border border-white/[0.065]">
-                          <div className="text-[10px] text-[#697483]">PREPROCESSING</div>
-                          <div className="text-[#68E7FF] font-bold mt-0.5">OpenCV Morph</div>
-                        </div>
-                        <div className="p-2.5 bg-[#111923] border border-white/[0.065]">
-                          <div className="text-[10px] text-[#697483]">EVAL F1 SCORE</div>
+                          <div className="text-[10px] text-[#697483]">TEST ACCURACY</div>
                           <div className="text-[#C7FF3E] font-bold mt-0.5">94.2% (Test Set)</div>
+                        </div>
+                        <div className="p-2.5 bg-[#111923] border border-white/[0.065]">
+                          <div className="text-[10px] text-[#697483]">EVAL PRECISION</div>
+                          <div className="text-[#68E7FF] font-bold mt-0.5">96.15% (Melanoma)</div>
                         </div>
                       </div>
 
