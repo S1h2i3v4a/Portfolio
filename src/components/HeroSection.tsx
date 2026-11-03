@@ -4,7 +4,7 @@ import React from 'react';
 import { PORTFOLIO_DATA } from '@/data/portfolioData';
 import { CinematicThreeCanvas } from '@/components/CinematicThreeCanvas';
 import { GithubIcon, LinkedinIcon } from '@/components/Icons';
-import { ArrowUpRight, FileText, Globe, Terminal } from 'lucide-react';
+import { ArrowUpRight, ArrowDown, Globe } from 'lucide-react';
 
 interface HeroSectionProps {
   reducedMotion: boolean;
@@ -20,122 +20,100 @@ export function HeroSection({
   const { profile } = PORTFOLIO_DATA;
 
   return (
-    <section id="home" className="py-10 sm:py-14 lg:py-18 border-b border-white/10 relative">
-      {/* Top Telemetry Strip */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-5 mb-8 border-b border-white/10 font-mono text-xs text-[#9499A3]">
-        <div className="flex items-center gap-2">
-          <span className="px-2.5 py-1 bg-[#D4FF00]/15 border border-[#D4FF00]/60 text-[#D4FF00] font-bold tracking-wider">
-            PORTFOLIO DESIGN HACKATHON 2026 {'//'} SKILLINF
-          </span>
-          <span className="hidden md:inline text-[#9499A3] border-l border-white/15 pl-3">
-            SECTOR: APPLIED SOFTWARE SYSTEMS
-          </span>
-        </div>
-        <div className="flex items-center gap-2.5">
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FF00] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#D4FF00]"></span>
-          </span>
-          <span className="text-[#F4F4F0] font-medium">{profile.statusBadge}</span>
-        </div>
-      </div>
-
-      {/* Main Hero Split Grid: 50% Editorial Punch + 50% Massive 3D WebGL Canvas */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-        {/* Left Editorial Narrative Column (6 Cols) */}
-        <div className="lg:col-span-6 space-y-6">
-          <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 text-xs font-mono text-[#D4FF00]">
-              <Terminal className="w-3.5 h-3.5" />
-              <span>{profile.name.toUpperCase()} • B.TECH CSE (2023–2027)</span>
+    <section
+      id="home"
+      className="min-h-[760px] flex flex-col justify-center py-12 lg:py-16 border-b border-white/[0.065] relative"
+    >
+      {/* Main Two-Column Split (48% Left / 52% Right) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        {/* Left Editorial Narrative Column (~48% -> 6 of 12 or 5.75 of 12) */}
+        <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center space-y-7">
+          {/* Status Label & Name Header */}
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs text-[#C7FF3E] uppercase tracking-[0.12em]">
+              <span className="w-2 h-2 bg-[#C7FF3E]" />
+              <span>PORTFOLIO / SOFTWARE ENGINEERING / 2026</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-black tracking-tight text-[#F4F4F0] leading-[1.04]">
-              Full-Stack Architect.{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4FF00] via-[#F4F4F0] to-[#00F0FF]">
-                Algorithmic Rigor.
-              </span>{' '}
-              Applied AI Systems.
-            </h1>
+            <div className="font-mono text-sm sm:text-base font-semibold tracking-wider text-[#929CAA] uppercase">
+              SHIVAM KESHARI
+            </div>
           </div>
 
-          <p className="text-base sm:text-lg text-[#9499A3] leading-relaxed max-w-xl">
-            Computer Science undergraduate at United Institute of Technology, Prayagraj.
-            Building resilient MERN & Next.js web applications, solving 300+ Java DSA problems,
-            and shipping applied deep learning pipelines.
+          {/* Core Headline: Tight Line-Height, Large Off-White Typography */}
+          <h1
+            className="font-black tracking-tight text-[#F4F7FB] leading-[1.02]"
+            style={{ fontSize: 'clamp(2.75rem, 5.8vw, 5.5rem)' }}
+          >
+            Building Practical Systems.
+            <br />
+            Engineering What’s{' '}
+            <span className="text-[#C7FF3E]">Next.</span>
+          </h1>
+
+          {/* Authentic Supporting Statement */}
+          <p className="text-base sm:text-lg text-[#929CAA] leading-[1.7] max-w-xl">
+            Computer Science undergraduate building full-stack applications, solving algorithmic
+            problems in Java, and exploring applied AI and computer vision.
           </p>
 
-          {/* High-Impact Stat Badges (Visual Numbers, Not Text Walls) */}
-          <div className="grid grid-cols-3 gap-3 pt-1">
-            <div className="p-3.5 bg-[#0E1015] border border-white/10 hover:border-[#D4FF00]/50 transition-colors">
-              <div className="text-2xl sm:text-3xl font-black text-[#D4FF00] font-mono">300+</div>
-              <div className="text-[11px] font-mono text-[#9499A3] mt-0.5">Java DSA Solved</div>
-            </div>
-            <div className="p-3.5 bg-[#0E1015] border border-white/10 hover:border-[#00F0FF]/50 transition-colors">
-              <div className="text-2xl sm:text-3xl font-black text-[#00F0FF] font-mono">MERN</div>
-              <div className="text-[11px] font-mono text-[#9499A3] mt-0.5">Full-Stack Core</div>
-            </div>
-            <div className="p-3.5 bg-[#0E1015] border border-white/10 hover:border-white/40 transition-colors">
-              <div className="text-2xl sm:text-3xl font-black text-[#F4F4F0] font-mono">1st</div>
-              <div className="text-[11px] font-mono text-[#9499A3] mt-0.5">SocProS Research</div>
-            </div>
-          </div>
-
-          {/* Action CTAs */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
+          {/* Two Structured Action Buttons */}
+          <div className="flex flex-wrap items-center gap-4 pt-1">
             <button
               type="button"
               onClick={onExploreWork}
-              className="px-7 py-3.5 bg-[#D4FF00] text-[#0A0B0E] font-mono text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center gap-2 hover:bg-[#e2ff4d] transition-all cursor-pointer shadow-[0_0_24px_rgba(212,255,0,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="px-6 sm:px-7 py-3.5 bg-[#C7FF3E] hover:bg-[#bcf82e] text-[#07090D] font-mono text-[13px] sm:text-sm font-semibold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-[0_0_24px_rgba(199,255,62,0.22)] focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
-              <span>Explore My Work</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <span>EXPLORE PROJECTS</span>
+              <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
             </button>
 
             <button
               type="button"
               onClick={onOpenResume}
-              className="px-6 py-3.5 bg-[#111318] hover:bg-[#181C26] text-[#F4F4F0] border border-white/20 hover:border-[#D4FF00] font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4FF00]"
+              className="px-6 sm:px-7 py-3.5 bg-transparent hover:bg-white/[0.04] text-[#E9EDF4] border border-white/10 hover:border-[#C7FF3E] font-mono text-[13px] sm:text-sm font-medium uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C7FF3E]"
             >
-              <FileText className="w-4 h-4 text-[#D4FF00]" />
-              <span>Download Resume</span>
+              <span>DOWNLOAD RESUME</span>
+              <ArrowDown className="w-4 h-4 text-[#C7FF3E]" />
             </button>
           </div>
 
-          {/* Direct Verified Social Anchors */}
-          <div className="pt-1 flex flex-wrap items-center gap-5 text-xs font-mono text-[#9499A3]">
+          {/* Row of Genuine Social Links */}
+          <div className="pt-2 flex flex-wrap items-center gap-5 text-xs font-mono text-[#929CAA]">
             <a
               href={profile.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-[#D4FF00] transition-colors"
+              className="flex items-center gap-1.5 hover:text-[#C7FF3E] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C7FF3E]"
             >
               <GithubIcon className="w-4 h-4" />
-              <span>github.com/S1h2i3v4a</span>
+              <span>GitHub</span>
             </a>
+            <span className="text-white/15">•</span>
             <a
               href={profile.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-[#D4FF00] transition-colors"
+              className="flex items-center gap-1.5 hover:text-[#C7FF3E] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C7FF3E]"
             >
               <LinkedinIcon className="w-4 h-4" />
-              <span>in/shivam15keshari</span>
+              <span>LinkedIn</span>
             </a>
+            <span className="text-white/15">•</span>
             <a
               href={profile.links.x}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-[#D4FF00] transition-colors"
+              className="flex items-center gap-1.5 hover:text-[#C7FF3E] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C7FF3E]"
             >
               <Globe className="w-4 h-4" />
-              <span>@ShivamK11959343</span>
+              <span>X (Twitter)</span>
             </a>
           </div>
         </div>
 
-        {/* Right 3D Cinematic Quantum WebGL Canvas (6 Cols) */}
-        <div className="lg:col-span-6 w-full">
+        {/* Right 3D Cinematic Computational Artifact Column (~52% -> 6 of 12) */}
+        <div className="lg:col-span-6 xl:col-span-6 w-full">
           <CinematicThreeCanvas reducedMotion={reducedMotion} />
         </div>
       </div>

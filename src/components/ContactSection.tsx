@@ -3,280 +3,243 @@
 import React, { useState, useMemo } from 'react';
 import { PORTFOLIO_DATA } from '@/data/portfolioData';
 import { GithubIcon, LinkedinIcon } from '@/components/Icons';
-import {
-  Globe,
-  Compass,
-  ArrowUpRight,
-  Mail,
-  Check,
-  Copy,
-  Terminal
-} from 'lucide-react';
+import { Globe, ArrowUpRight, Copy, Check, Send } from 'lucide-react';
 
 export function ContactSection() {
   const { profile } = PORTFOLIO_DATA;
-  const [contactForm, setContactForm] = useState({
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
-    context: 'Software Engineering Internship / Full-Time Role',
+    category: 'Software Engineering / Full-Stack Role',
     message: ''
   });
-  const [contactCopied, setContactCopied] = useState(false);
+  const [copied, setCopied] = useState(false);
 
-  const formattedInquiryText = useMemo(() => {
+  const engagementCategories = [
+    'Software Engineering / Full-Stack Role',
+    'Applied AI & Computer Vision Collaboration',
+    'Open Source & Hackathon Teamwork',
+    'General Technical Discussion'
+  ];
+
+  const preparedPayload = useMemo(() => {
     return [
-      `To: Shivam Keshari (${profile.links.linkedin})`,
-      `From: ${contactForm.name || '[Your Name]'} (${contactForm.email || '[Your Email]'})`,
-      `Subject: ${contactForm.context}`,
+      `To: Shivam Keshari (shivamkeshari1510@gmail.com)`,
+      `From: ${formData.name || '[Your Name]'} (${formData.email || '[Your Email]'})`,
+      `Category: ${formData.category}`,
       `----------------------------------------`,
-      contactForm.message ||
-        'Hello Shivam, I reviewed your engineering portfolio and would love to connect regarding software engineering opportunities...'
+      formData.message || 'Hello Shivam, I reviewed your engineering portfolio and would like to connect...'
     ].join('\n');
-  }, [contactForm, profile.links.linkedin]);
+  }, [formData]);
 
-  const handleCopyInquiry = () => {
-    navigator.clipboard.writeText(formattedInquiryText);
-    setContactCopied(true);
-    setTimeout(() => setContactCopied(false), 2500);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(preparedPayload);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleLaunchMailClient = (e: React.FormEvent) => {
+  const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(
-      `[Portfolio Inquiry] ${contactForm.context} — from ${contactForm.name || 'Visitor'}`
-    );
-    const body = encodeURIComponent(formattedInquiryText);
-    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+    const subject = encodeURIComponent(`[Portfolio Contact] ${formData.category} - ${formData.name || 'Visitor'}`);
+    const body = encodeURIComponent(preparedPayload);
+    window.location.href = `mailto:shivamkeshari1510@gmail.com?subject=${subject}&body=${body}`;
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-24 relative">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-        {/* Left Column: Direct Links & Availability Terminal (5 cols) */}
-        <div className="lg:col-span-5 space-y-6">
-          <div>
-            <div className="font-mono text-xs text-[#D4FF00] uppercase tracking-widest mb-2 flex items-center gap-2">
-              <span className="w-2 h-2 bg-[#D4FF00]" />
-              <span>05 {'//'} INITIATE TRANSMISSION</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-black text-[#F4F4F0] tracking-tight">
-              Let’s Build Production Systems Together.
-            </h2>
+    <section id="contact" className="py-16 sm:py-24 lg:py-28 relative">
+      {/* Header */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-baseline mb-14">
+        <div className="lg:col-span-3">
+          <div className="font-mono text-xs text-[#C7FF3E] uppercase tracking-[0.12em] flex items-center gap-2">
+            <span className="w-2 h-2 bg-[#C7FF3E]" />
+            <span>05 / INITIATE</span>
           </div>
+        </div>
 
-          <p className="text-base text-[#9499A3] leading-relaxed">
-            Final-year Computer Science undergraduate at United Institute of Technology (Class of 2027),
-            actively open to software engineering internships, backend/full-stack roles, and applied AI systems builds.
+        <div className="lg:col-span-9 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <h2
+            className="font-black text-[#F4F7FB] tracking-tight leading-[1.05]"
+            style={{ fontSize: 'clamp(2.1rem, 4vw, 3.8rem)' }}
+          >
+            Have a Problem
+            <br />
+            Worth <span className="text-[#C7FF3E]">Solving?</span>
+          </h2>
+          <p className="font-mono text-xs text-[#697483]">
+            RESPONSE TIME / 24–48 HOURS
+          </p>
+        </div>
+      </div>
+
+      {/* Main Two-Column Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        {/* Left Column: Authentic Copy & Verified Channels (5 Cols) */}
+        <div className="lg:col-span-5 space-y-6">
+          <p className="text-base sm:text-lg text-[#929CAA] leading-[1.75]">
+            Interested in software engineering, full-stack development, applied AI, or collaborative projects?
+            Let’s connect.
           </p>
 
-          {/* Direct Verified Transmission Links */}
+          <p className="text-sm text-[#697483] leading-relaxed">
+            I am currently in my pre-final year of Computer Science (Class of 2027) and actively open
+            to software engineering internships, technical apprenticeships, and applied vision projects.
+          </p>
+
+          {/* Verified Social & Code Channels */}
           <div className="space-y-3 pt-2">
             <a
               href={profile.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between p-4 bg-[#0E1015] border border-white/10 hover:border-[#D4FF00] transition-all group"
+              className="flex items-center justify-between p-4 bg-[#0D1219] border border-white/10 hover:border-[#C7FF3E] transition-all group"
             >
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-[#151922] border border-white/10 group-hover:border-[#D4FF00]/60">
-                  <GithubIcon className="w-5 h-5 text-[#D4FF00]" />
+                <div className="p-2 bg-[#111923] border border-white/10 group-hover:border-[#C7FF3E]/40">
+                  <GithubIcon className="w-5 h-5 text-[#C7FF3E]" />
                 </div>
                 <div>
-                  <div className="font-mono text-xs font-bold text-[#F4F4F0]">GITHUB ARCHIVES</div>
-                  <div className="font-mono text-xs text-[#9499A3]">github.com/S1h2i3v4a</div>
+                  <div className="font-mono text-xs font-bold text-[#F4F7FB]">GITHUB ARCHIVES</div>
+                  <div className="font-mono text-xs text-[#929CAA]">github.com/S1h2i3v4a</div>
                 </div>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-[#9499A3] group-hover:text-[#D4FF00] transition-colors" />
+              <ArrowUpRight className="w-4 h-4 text-[#929CAA] group-hover:text-[#C7FF3E] transition-colors" />
             </a>
 
             <a
               href={profile.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between p-4 bg-[#0E1015] border border-white/10 hover:border-[#00F0FF] transition-all group"
+              className="flex items-center justify-between p-4 bg-[#0D1219] border border-white/10 hover:border-[#68E7FF] transition-all group"
             >
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-[#151922] border border-white/10 group-hover:border-[#00F0FF]/60">
-                  <LinkedinIcon className="w-5 h-5 text-[#00F0FF]" />
+                <div className="p-2 bg-[#111923] border border-white/10 group-hover:border-[#68E7FF]/40">
+                  <LinkedinIcon className="w-5 h-5 text-[#68E7FF]" />
                 </div>
                 <div>
-                  <div className="font-mono text-xs font-bold text-[#F4F4F0]">LINKEDIN NETWORK</div>
-                  <div className="font-mono text-xs text-[#9499A3]">
-                    linkedin.com/in/shivam15keshari
-                  </div>
+                  <div className="font-mono text-xs font-bold text-[#F4F7FB]">LINKEDIN PROFILE</div>
+                  <div className="font-mono text-xs text-[#929CAA]">linkedin.com/in/shivam15keshari</div>
                 </div>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-[#9499A3] group-hover:text-[#00F0FF] transition-colors" />
+              <ArrowUpRight className="w-4 h-4 text-[#929CAA] group-hover:text-[#68E7FF] transition-colors" />
             </a>
 
             <a
               href={profile.links.x}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between p-4 bg-[#0E1015] border border-white/10 hover:border-[#D4FF00] transition-all group"
+              className="flex items-center justify-between p-4 bg-[#0D1219] border border-white/10 hover:border-[#C7FF3E] transition-all group"
             >
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-[#151922] border border-white/10 group-hover:border-[#D4FF00]/60">
-                  <Globe className="w-5 h-5 text-[#D4FF00]" />
+                <div className="p-2 bg-[#111923] border border-white/10 group-hover:border-[#C7FF3E]/40">
+                  <Globe className="w-5 h-5 text-[#C7FF3E]" />
                 </div>
                 <div>
-                  <div className="font-mono text-xs font-bold text-[#F4F4F0]">X (TWITTER) DISPATCH</div>
-                  <div className="font-mono text-xs text-[#9499A3]">x.com/ShivamK11959343</div>
+                  <div className="font-mono text-xs font-bold text-[#F4F7FB]">X (TWITTER) DISPATCH</div>
+                  <div className="font-mono text-xs text-[#929CAA]">x.com/ShivamK11959343</div>
                 </div>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-[#9499A3] group-hover:text-[#D4FF00] transition-colors" />
-            </a>
-
-            <a
-              href={profile.links.previousPortfolio}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-between p-4 bg-[#0E1015] border border-white/10 hover:border-[#9D4EDD] transition-all group"
-            >
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-[#151922] border border-white/10 group-hover:border-[#9D4EDD]/60">
-                  <Compass className="w-5 h-5 text-[#9D4EDD]" />
-                </div>
-                <div>
-                  <div className="font-mono text-xs font-bold text-[#F4F4F0]">
-                    PREVIOUS PORTFOLIO DEPLOYMENT
-                  </div>
-                  <div className="font-mono text-xs text-[#9499A3]">
-                    my-portfolio-od9l.onrender.com
-                  </div>
-                </div>
-              </div>
-              <ArrowUpRight className="w-4 h-4 text-[#9499A3] group-hover:text-[#9D4EDD] transition-colors" />
+              <ArrowUpRight className="w-4 h-4 text-[#929CAA] group-hover:text-[#C7FF3E] transition-colors" />
             </a>
           </div>
         </div>
 
-        {/* Right Column: Honest, Functional Dispatch Terminal (7 cols) */}
-        <div className="lg:col-span-7 bg-[#0E1015] border border-white/10 p-6 sm:p-8 lg:p-10 relative">
-          <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6 font-mono text-xs">
-            <span className="text-[#F4F4F0] font-bold flex items-center gap-2">
-              <Terminal className="w-4 h-4 text-[#D4FF00]" />
-              <span>DIRECT MESSAGE DISPATCHER</span>
-            </span>
-            <span className="text-[#D4FF00] font-semibold">VERIFIED MAILTO + CLIPBOARD PAYLOAD</span>
+        {/* Right Column: Accessible Functional Contact Form (7 Cols) */}
+        <div className="lg:col-span-7 bg-[#0D1219] border border-white/10 p-6 sm:p-8 lg:p-9 space-y-5">
+          <div className="border-b border-white/[0.065] pb-3 flex items-center justify-between font-mono text-xs">
+            <span className="text-[#F4F7FB] font-bold">CONTACT DISPATCHER</span>
+            <span className="text-[#697483] text-[11px]">OPENS YOUR EMAIL CLIENT OR COPIES PAYLOAD</span>
           </div>
 
-          <form onSubmit={handleLaunchMailClient} className="space-y-4">
+          <form onSubmit={handleSend} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label
-                  htmlFor="visitor-name"
-                  className="block font-mono text-xs text-[#9499A3] mb-1.5"
-                >
+                <label htmlFor="name-input" className="block font-mono text-xs text-[#929CAA] mb-1.5">
                   YOUR NAME *
                 </label>
                 <input
-                  id="visitor-name"
+                  id="name-input"
                   type="text"
                   required
-                  value={contactForm.name}
-                  onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
-                  placeholder="e.g., Rohan Verma"
-                  className="w-full bg-[#07080B] border border-white/15 px-3.5 py-2.5 text-sm text-[#F4F4F0] focus:outline-none focus:border-[#D4FF00]"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  placeholder="e.g., Alex Chen"
+                  className="w-full bg-[#07090D] border border-white/15 px-3.5 py-2.5 text-sm text-[#F4F7FB] placeholder:text-[#697483] focus:outline-none focus:border-[#C7FF3E] focus:ring-1 focus:ring-[#C7FF3E]"
                 />
               </div>
+
               <div>
-                <label
-                  htmlFor="visitor-email"
-                  className="block font-mono text-xs text-[#9499A3] mb-1.5"
-                >
+                <label htmlFor="email-input" className="block font-mono text-xs text-[#929CAA] mb-1.5">
                   YOUR EMAIL *
                 </label>
                 <input
-                  id="visitor-email"
+                  id="email-input"
                   type="email"
                   required
-                  value={contactForm.email}
-                  onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                  placeholder="name@company.com"
-                  className="w-full bg-[#07080B] border border-white/15 px-3.5 py-2.5 text-sm text-[#F4F4F0] focus:outline-none focus:border-[#D4FF00]"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  placeholder="alex@company.com"
+                  className="w-full bg-[#07090D] border border-white/15 px-3.5 py-2.5 text-sm text-[#F4F7FB] placeholder:text-[#697483] focus:outline-none focus:border-[#C7FF3E] focus:ring-1 focus:ring-[#C7FF3E]"
                 />
               </div>
             </div>
 
             <div>
-              <label
-                htmlFor="inquiry-context"
-                className="block font-mono text-xs text-[#9499A3] mb-1.5"
-              >
-                ENGAGEMENT CONTEXT
+              <label htmlFor="category-select" className="block font-mono text-xs text-[#929CAA] mb-1.5">
+                ENGAGEMENT CATEGORY (OPTIONAL)
               </label>
               <select
-                id="inquiry-context"
-                value={contactForm.context}
-                onChange={(e) => setContactForm({ ...contactForm, context: e.target.value })}
-                className="w-full bg-[#07080B] border border-white/15 px-3.5 py-2.5 text-sm text-[#F4F4F0] focus:outline-none focus:border-[#D4FF00]"
+                id="category-select"
+                value={formData.category}
+                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                className="w-full bg-[#07090D] border border-white/15 px-3.5 py-2.5 text-sm text-[#F4F7FB] focus:outline-none focus:border-[#C7FF3E] focus:ring-1 focus:ring-[#C7FF3E] cursor-pointer"
               >
-                <option value="Software Engineering Internship / Full-Time Role">
-                  Software Engineering Internship / Full-Time Role
-                </option>
-                <option value="Full-Stack Web Architecture Collaboration">
-                  Full-Stack Web Architecture Collaboration
-                </option>
-                <option value="Applied Computer Vision / AI Discussion">
-                  Applied Computer Vision / AI Discussion
-                </option>
-                <option value="Hackathon / Engineering Project Inquiry">
-                  Hackathon / Engineering Project Inquiry
-                </option>
+                {engagementCategories.map((c) => (
+                  <option key={c} value={c} className="bg-[#07090D] text-[#F4F7FB]">
+                    {c}
+                  </option>
+                ))}
               </select>
             </div>
 
             <div>
-              <label
-                htmlFor="inquiry-message"
-                className="block font-mono text-xs text-[#9499A3] mb-1.5"
-              >
-                MESSAGE PAYLOAD *
+              <label htmlFor="message-input" className="block font-mono text-xs text-[#929CAA] mb-1.5">
+                MESSAGE *
               </label>
               <textarea
-                id="inquiry-message"
+                id="message-input"
                 rows={4}
                 required
-                value={contactForm.message}
-                onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-                placeholder="Share your role requirements, project scope, or collaboration context..."
-                className="w-full bg-[#07080B] border border-white/15 p-3.5 text-sm text-[#F4F4F0] focus:outline-none focus:border-[#D4FF00]"
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                placeholder="Share project requirements, team details, or collaboration ideas..."
+                className="w-full bg-[#07090D] border border-white/15 p-3.5 text-sm text-[#F4F7FB] placeholder:text-[#697483] focus:outline-none focus:border-[#C7FF3E] focus:ring-1 focus:ring-[#C7FF3E]"
               />
             </div>
 
-            {/* Action Buttons: Mailto + Copy Payload */}
-            <div className="pt-2 flex flex-wrap items-center gap-3">
+            {/* Behavior Explanation Note */}
+            <p className="text-[11px] font-mono text-[#697483]">
+              * Clicking &quot;Launch Email Client&quot; creates a pre-filled mailto message in your default email application.
+              Alternatively, use &quot;Copy Message Payload&quot; to paste directly into your preferred service.
+            </p>
+
+            <div className="flex flex-wrap gap-3 pt-1">
               <button
                 type="submit"
-                className="px-6 py-3.5 bg-[#D4FF00] text-[#0A0B0E] font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:bg-[#e2ff4d] transition-all cursor-pointer shadow-[0_0_20px_rgba(212,255,0,0.2)]"
+                className="px-6 py-3 bg-[#C7FF3E] hover:bg-[#bcf82e] text-[#07090D] font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-colors cursor-pointer"
               >
-                <Mail className="w-4 h-4" />
-                <span>Transmit via Native Mail Client</span>
+                <Send className="w-3.5 h-3.5 stroke-[2.5]" />
+                <span>Launch Email Client</span>
               </button>
 
               <button
                 type="button"
-                onClick={handleCopyInquiry}
-                className="px-5 py-3.5 bg-[#07080B] border border-white/20 hover:border-[#D4FF00] text-[#F4F4F0] font-mono text-xs flex items-center gap-2 transition-colors cursor-pointer"
+                onClick={handleCopy}
+                className="px-5 py-3 bg-[#111923] border border-white/10 hover:border-white/30 text-[#E9EDF4] font-mono text-xs font-medium uppercase tracking-wider flex items-center gap-2 transition-colors cursor-pointer"
               >
-                {contactCopied ? (
-                  <>
-                    <Check className="w-4 h-4 text-[#D4FF00]" />
-                    <span className="text-[#D4FF00]">PAYLOAD COPIED TO CLIPBOARD</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-4 h-4 text-[#9499A3]" />
-                    <span>Copy Formatted Payload for LinkedIn / X</span>
-                  </>
-                )}
+                {copied ? <Check className="w-3.5 h-3.5 text-[#C7FF3E]" /> : <Copy className="w-3.5 h-3.5" />}
+                <span>{copied ? 'Payload Copied to Clipboard' : 'Copy Message Payload'}</span>
               </button>
             </div>
-
-            <p className="text-[11px] font-mono text-[#9499A3] pt-1">
-              * Zero fake success banners: launches your native email client with pre-filled headers, or copies the structured message to your clipboard for direct messaging on LinkedIn/X.
-            </p>
           </form>
         </div>
       </div>

@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#0A0B0E',
+  themeColor: '#07090D',
   colorScheme: 'dark'
 };
 
@@ -63,7 +63,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-[#0A0B0E] text-[#F4F4F0] selection:bg-[#D4FF00] selection:text-[#0A0B0E]`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-[#07090D] text-[#E9EDF4] selection:bg-[#C7FF3E] selection:text-[#07090D]`}
       >
         {children}
       </body>

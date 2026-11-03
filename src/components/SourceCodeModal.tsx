@@ -26,15 +26,16 @@ export const PORTFOLIO_DATA = ${JSON.stringify(PORTFOLIO_DATA, null, 2)} as cons
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "15.2.0",
+    "next": "15.5.28",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "three": "^0.182.0",
     "lucide-react": "^1.16.0"
   },
   "devDependencies": {
@@ -43,8 +44,9 @@ export const PORTFOLIO_DATA = ${JSON.stringify(PORTFOLIO_DATA, null, 2)} as cons
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.182.0",
     "eslint": "^9",
-    "eslint-config-next": "15.2.0",
+    "eslint-config-next": "15.5.28",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
@@ -53,11 +55,11 @@ export const PORTFOLIO_DATA = ${JSON.stringify(PORTFOLIO_DATA, null, 2)} as cons
 Built for the **Portfolio Design Hackathon 2026 by Skillinf**.
 
 ## Tech Stack & Architecture
-- **Framework**: Next.js 15 (App Router), React 19, TypeScript
-- **Styling**: Tailwind CSS v4, Custom Architectural Obsidian & Electric Lime tokens
-- **Interactive 3D**: Native HTML5 Canvas 3D Geodesic / Tensor Lattice with depth sorting & reduced motion fallback
+- **Framework**: Next.js 15.5.28 (App Router), React 19, TypeScript
+- **Styling**: Tailwind CSS v4, Custom Argon Palette (Obsidian #07090D & Electric Lime #C7FF3E)
+- **Interactive 3D**: Three.js WebGL Cinematic Computational Core with spatial parallax, pulse shockwave, and 2D vector blueprint fallback
 - **Icons**: Lucide React
-- **Hosting**: Vercel / Netlify / Render ready
+- **Hosting**: Vercel ready
 
 ## Quick Start
 \`\`\`bash
@@ -66,10 +68,6 @@ npm install
 npm run dev
 \`\`\`
 Visit http://localhost:3000
-
-## Adding Your Official Resume PDF
-Drop your updated PDF at:
-\`public/resume.pdf\`
 `
   };
 
@@ -86,20 +84,20 @@ Drop your updated PDF at:
       aria-modal="true"
       aria-labelledby="source-modal-title"
     >
-      <div className="bg-[#111318] border border-[#D4FF00]/60 max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 space-y-5">
-        <div className="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
+      <div className="bg-[#0D1219] border border-[#C7FF3E]/50 max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 space-y-5">
+        <div className="flex items-start justify-between gap-4 border-b border-white/[0.065] pb-4">
           <div>
-            <div className="font-mono text-xs text-[#D4FF00]">
+            <div className="font-mono text-xs text-[#C7FF3E]">
               DEVELOPER HANDOFF {'//'} NEXT.JS APP ROUTER WORKSPACE
             </div>
-            <h2 id="source-modal-title" className="text-xl font-bold text-[#F4F4F0] mt-1">
+            <h2 id="source-modal-title" className="text-xl font-bold text-[#F4F7FB] mt-1">
               Editable Project Configuration & Deployment Files
             </h2>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-2 border border-white/20 text-[#9499A3] hover:text-white cursor-pointer"
+            className="p-2 border border-white/20 text-[#929CAA] hover:text-[#F4F7FB] cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -118,8 +116,8 @@ Drop your updated PDF at:
                 onClick={() => setActiveSourceTab(tab.id)}
                 className={`px-3 py-1.5 border cursor-pointer ${
                   activeSourceTab === tab.id
-                    ? 'border-[#D4FF00] bg-[#D4FF00]/10 text-[#D4FF00]'
-                    : 'border-white/15 text-[#9499A3] hover:text-white'
+                    ? 'border-[#C7FF3E] bg-[#C7FF3E]/10 text-[#C7FF3E]'
+                    : 'border-white/15 text-[#929CAA] hover:text-[#F4F7FB]'
                 }`}
               >
                 {tab.label}
@@ -130,14 +128,14 @@ Drop your updated PDF at:
           <button
             type="button"
             onClick={handleCopySourceFile}
-            className="px-3.5 py-1.5 bg-[#D4FF00] text-[#0A0B0E] font-mono text-xs font-bold flex items-center gap-1.5 cursor-pointer hover:bg-[#e1ff33] transition-colors"
+            className="px-3.5 py-1.5 bg-[#C7FF3E] hover:bg-[#bcf82e] text-[#07090D] font-mono text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-colors"
           >
             {copiedSource ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
             <span>{copiedSource ? 'COPIED TO CLIPBOARD' : 'COPY FILE'}</span>
           </button>
         </div>
 
-        <pre className="p-4 bg-[#0A0B0E] border border-white/15 font-mono text-xs text-[#F4F4F0] overflow-x-auto max-h-[50vh]">
+        <pre className="p-4 bg-[#07090D] border border-white/10 font-mono text-xs text-[#E9EDF4] overflow-x-auto max-h-[50vh]">
           {sourceFiles[activeSourceTab]}
         </pre>
       </div>

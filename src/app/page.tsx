@@ -62,14 +62,14 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0B0E] text-[#F4F4F0] selection:bg-[#D4FF00] selection:text-[#0A0B0E] font-sans antialiased relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#07090D] text-[#E9EDF4] selection:bg-[#C7FF3E] selection:text-[#07090D] font-sans antialiased relative overflow-x-hidden">
       {/* Subtle Architectural Blueprint Background Grid */}
       <div
-        className="pointer-events-none fixed inset-0 z-0 opacity-30"
+        className="pointer-events-none fixed inset-0 z-0 opacity-25"
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px)
+            linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)
           `,
           backgroundSize: '64px 64px'
         }}
@@ -81,11 +81,12 @@ export default function Home() {
         reducedMotion={reducedMotion}
         onToggleReducedMotion={() => setReducedMotion((prev) => !prev)}
         onOpenSourceModal={() => setSourceModalOpen(true)}
+        onOpenResumeModal={() => setResumeModalOpen(true)}
         onScrollToSection={scrollToSection}
       />
 
-      {/* Main Landmark Structure */}
-      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Main Landmark Structure (Max 1440px with responsive clamp padding) */}
+      <main className="relative z-10 max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         <HeroSection
           reducedMotion={reducedMotion}
           onExploreWork={() => scrollToSection('projects')}

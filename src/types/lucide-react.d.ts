@@ -18,6 +18,9 @@ declare module 'lucide-react' {
   export const Cpu: LucideIcon;
   export const Layers: LucideIcon;
   export const ArrowUpRight: LucideIcon;
+  export const ArrowUp: LucideIcon;
+  export const ArrowDown: LucideIcon;
+  export const AlertCircle: LucideIcon;
   export const Globe: LucideIcon;
   export const FileText: LucideIcon;
   export const Sparkles: LucideIcon;
