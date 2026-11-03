@@ -18,6 +18,7 @@ declare module 'lucide-react' {
   export const Cpu: LucideIcon;
   export const Layers: LucideIcon;
   export const ArrowUpRight: LucideIcon;
+  export const ArrowRight: LucideIcon;
   export const ArrowUp: LucideIcon;
   export const ArrowDown: LucideIcon;
   export const AlertCircle: LucideIcon;
@@ -30,11 +31,14 @@ declare module 'lucide-react' {
   export const Eye: LucideIcon;
   export const EyeOff: LucideIcon;
   export const ChevronRight: LucideIcon;
+  export const ChevronLeft: LucideIcon;
   export const FolderGit2: LucideIcon;
   export const BookOpen: LucideIcon;
   export const Award: LucideIcon;
   export const Send: LucideIcon;
   export const Mail: LucideIcon;
+  export const MapPin: LucideIcon;
+  export const DollarSign: LucideIcon;
   export const ExternalLink: LucideIcon;
   export const Menu: LucideIcon;
   export const X: LucideIcon;
@@ -57,7 +61,6 @@ declare module 'lucide-react' {
   export const Calendar: LucideIcon;
   export const CloudSun: LucideIcon;
 
-  // Fallback for any other lucide icon
   const icon: LucideIcon;
   export default icon;
 }

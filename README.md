@@ -1,4 +1,4 @@
-# Shivam Keshari — Developer Portfolio (2026)
+# Shivam Keshari — Cinematic 3D Developer Portfolio (2026)
 
 **Live Deployment:** [https://portfolio-nine-ecru-zg2e05s2eq.vercel.app/](https://portfolio-nine-ecru-zg2e05s2eq.vercel.app/)  
 **GitHub Repository:** [https://github.com/S1h2i3v4a/Portfolio](https://github.com/S1h2i3v4a/Portfolio)  
@@ -6,107 +6,80 @@
 
 ---
 
-## 🌟 Visual Identity & Engineering Architecture
+## 🌟 Visual Direction & Cinematic 3D Architecture
 
-An award-winning, production-grade developer portfolio engineered for Shivam Keshari. Built with **Next.js 15 (App Router)**, **React 19**, **Three.js / WebGL**, **TypeScript**, and **Tailwind CSS v4**.
+An award-winning, production-grade 3D developer portfolio engineered for **Shivam Keshari** inspired by experimental digital art, high-end sci-fi interfaces, and the master storyboard design. Built with **Next.js 15 (App Router)**, **React 19**, **Three.js / WebGL**, **TypeScript**, and **Tailwind CSS v4**.
 
-- **Argon Visual Design System**:
-  - Main Canvas Background: `#07090D`
-  - Primary Sections: `#090C11`
-  - Elevated Cards & Panels: `#0D1219`
-  - Restrained Electric Lime Accent: `#C7FF3E`
-  - Technical Icy Cyan Accent: `#68E7FF`
-  - Editorial Alabaster Typography: `#F4F7FB`
-- **Cinematic 3D Computational Artifact**:
-  - Interactive Three.js WebGL scene featuring an inner glowing dodecahedron core, counter-rotating geodesic outer cage, atmospheric particle dust, dynamic point lights, and smooth pointer parallax.
-  - Automatic context handling, device pixel ratio clamping (1.5x) for 60fps performance, and a comprehensive 2D vector blueprint fallback for users preferring reduced motion.
-- **Verifiable Engineering Case Studies**:
-  1. **Skin Disease Detection & Severity Classification**: OpenCV morphological black-hat hair filtering + CLAHE contrast enhancement + Otsu ROI lesion segmentation + EfficientNet-B0 convolutional network. Evaluated on the benchmark **PH2 dataset (200 clinical images: 80 Atypical Nevus, 80 Common Nevus, 40 Melanoma)** using an 80/20 stratified split, achieving **94.2% test accuracy** and **96.15% precision** (co-authored SocProS conference paper).
-  2. **Full-Stack Financial Expense & Budget Platform**: MERN stack with multi-stage MongoDB aggregation pipelines (`$match`, `$group`, `$sort`), JWT authentication middleware, and optimistic React UI updates.
-  3. **Celebration & Event Planner Web Application**: Chronological event milestone orchestrator, vendor task state-machine, and real-time budget delta reconciliation ([Repository](https://github.com/S1h2i3v4a/Event-planner)).
-  4. **Dynamic Mock API Generator & Weather Telemetry Suite**: Custom JSON schema builder, HTTP status error simulator (200 OK, 429 Rate Limit, 500 Server Error), and debounced city weather telemetry client.
-- **Honest & Verifiable**:
-  - Real project repositories and metrics.
-  - Zero fake skill percentage bars or artificial countdown timers.
-  - Official compiled CV document bundled at `public/resume.pdf` with direct 1-click download.
+### 🎨 Argon Cinematic Design System
+- **Deep Cosmic Canvas**: `#07090D` (Page) / `#090C11` (Sections) / `#0D1219` (Glass Panels)
+- **Primary Accent**: Electric Lime (`#C7FF3E`)
+- **Secondary Accent**: Technical Icy Cyan (`#68E7FF`)
+- **Editorial Typography**: Warm Off-White (`#F4F7FB`) & Cool Slate (`#929CAA`)
+- **Glassmorphic Paneling**: Subtle borders (`rgba(255,255,255,0.1)`), realistic refraction, and controlled depth shadows.
+
+---
+
+## 🌌 Section-by-Section 3D Breakdown
+
+### 1. HERO — Zero-G Astronaut in Deep Space (`HeroAstronautScene.tsx`)
+- **Visuals**: Procedural 3D spacefarer with articulated helmet, reflective planetary visor, pressurized suit, and PLSS backpack with glowing cyan/lime thrusters.
+- **Atmosphere**: Curving planetary sphere with atmospheric blue/green limb glow, tilted planetary rings, slow-tumbling space asteroids, and 450+ twinkling cosmic stars.
+- **Interactivity**: Dynamic pointer parallax responding to mouse coordinates with zero-g floating physics.
+
+### 2. 3D QUANTUM VIEWER — Interactive Tensor Core (`QuantumViewerSection.tsx`)
+- **Visuals**: Faceted quantum crystal core (nested octahedron/icosahedron) surrounded by dual counter-rotating metallic bronze and cyber-cyan orbital rings with orbiting data satellites.
+- **Modes**: Real-time geometry switching between **Quantum** (faceted crystal refraction), **Wireframe** (glowing neon edges), and **Lattice** (geodesic atomic node network).
+- **Controls**: Drag to rotate in 3D, scroll/pinch to zoom, carousel preset angle buttons (`Isometric`, `Equatorial`, `Top-Down`), and 1-click viewpoint reset.
+
+### 3. ABOUT ME — Neoclassical Digital Sculpture (`HolographicBustScene.tsx`)
+- **Visuals**: Classical sculpture (David bust aesthetic) with draped shoulders, chiseled jawline, and sculpted hair curls rendered with alabaster stone and glowing holographic wireframe.
+- **Environment**: Multi-tiered cyberpunk cylindrical pedestal with glowing circular neon rings, rotating tilted orbital energy rings, and rising holographic spark particles.
+
+### 4. MY SKILLS — 3D Interconnected Constellation (`SkillsConstellationScene.tsx`)
+- **Visuals**: Central glowing `</>` core with dynamic light beams connected to surrounding satellite technology nodes (React, Next.js, TypeScript, Tailwind, Python, Three.js, Node.js, MongoDB, Java).
+- **Interactivity**: Hovering over or clicking any glassmorphic technology card highlights the specific node in 3D and illuminates its energy pathway.
+
+### 5. MY PROJECTS — Floating Cinematic Cards (`ProjectsSection.tsx`)
+- **Visuals**: 4 floating glassmorphic cards with rich digital previews, category filters, and glowing green action buttons:
+  1. **Skin Disease Detection**: AI-powered diagnosis with **94.2% Test Accuracy** on the benchmark **PH2 dataset (200 clinical images, 80/20 stratified split)** with OpenCV & EfficientNet-B0 (SocProS 2026 paper).
+  2. **Celebration & Event Planner**: Milestone orchestrator, vendor task state machine, and real-time budget reconciliation ([Repository](https://github.com/S1h2i3v4a/Event-planner)).
+  3. **Weather Forecast App & Mock Telemetry**: Meteorological telemetry with JSON schema generator & simulated HTTP status codes (200, 429, 500).
+  4. **Financial Platform & AI Resume Analyzer**: MERN cash-flow analytics with MongoDB aggregation pipelines & JWT authentication.
+- **Modals**: Full deep-dive case study drawers with interactive live simulators.
+
+### 6. MY JOURNEY — Neon Conduit Timeline & 3D Trophy (`HolographicTrophyScene.tsx`)
+- **Timeline**: Verified academic milestones (B.Tech CSE 2023–2027 at United Institute of Technology, Prayagraj, 300+ Java DSA problems on LeetCode/GFG, Hackathons, and SocProS research).
+- **3D Trophy**: Classical chalice cup with fluted stem, sculpted handles, and inner glowing emerald gem on a neon pedestal surrounded by a rising double-helix of neon particles.
+
+### 7. GET IN TOUCH — Holographic Envelope & Secure Dispatch (`HolographicEnvelopeScene.tsx`)
+- **3D Envelope**: Floating translucent glass envelope with glowing seams, open triangular flap, floating digital letter with laser text lines, and cylindrical pedestal with scanning light beams.
+- **Channels**: Verified email (`shivamkeshari1510@gmail.com`), Location (`Prayagraj, India`), LinkedIn, and GitHub with genuine client-side mailto dispatch.
+
+### 8. FOOTER — Minimalist Colophon (`Footer.tsx`)
+- Moniker `S1h2i3v4a`, copyright, verified social links, and smooth back-to-top trigger.
+
+---
+
+## ⚡ Performance & Accessibility
+- **Zero Heavy External GLTF Assets**: All 3D scenes are procedurally generated using pure Three.js geometries, eliminating 404s, CORS issues, and heavy downloads.
+- **Dynamic Lazy Loading**: Every Three.js canvas is dynamically imported with `next/dynamic` (`ssr: false`) to guarantee instant initial page loads (First Load JS: ~130 kB).
+- **DPR Clamping**: Device pixel ratio clamped at 1.5x to sustain stable 60fps performance on high-density mobile and retina displays.
+- **Reduced Motion Support**: Full 2D architectural blueprint vector fallbacks provided when `prefers-reduced-motion` is active or toggled via the navbar.
 
 ---
 
 ## 🚀 Quick Start (Local Development)
 
-### 1. Prerequisites
-- Node.js `v18.18+` or `v20+` or `v22+`
-- npm, pnpm, or yarn
-
-### 2. Installation
 ```bash
 cd portfolio
 npm install
-```
-
-### 3. Run Development Server
-```bash
 npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### 4. Build for Production
 ```bash
 npm run build
 npm run start
-```
-
----
-
-## 📄 Official Resume PDF
-The official compiled resume document is bundled directly at `portfolio/public/resume.pdf`.
-- **Hero CTA**: Clicking **DOWNLOAD RESUME** triggers immediate file download (`Shivam_Keshari_Resume.pdf`).
-- **In-App Modal**: Visitors can inspect the verified resume summary and use the **Download PDF** or **Print Sheet** actions.
-
----
-
-## 🌐 Deploying to Vercel
-
-```bash
-# Push updates to GitHub
-git add .
-git commit -m "fix(corrections): update event planner link, attach resume pdf, qualify skin disease test metrics, unify academic year, and clean up readme"
-git push origin main
-```
-Vercel automatically triggers a clean continuous deployment from the `main` branch to [https://portfolio-nine-ecru-zg2e05s2eq.vercel.app/](https://portfolio-nine-ecru-zg2e05s2eq.vercel.app/).
-
----
-
-## 📁 Project Architecture
-```
-portfolio/
-├── public/
-│   ├── resume.pdf           # Official verified curriculum vitae
-│   └── favicon.ico
-├── src/
-│   ├── app/
-│   │   ├── globals.css      # Theme tokens & custom scrollbars
-│   │   ├── layout.tsx       # Root layout with Geist font & SEO metadata
-│   │   └── page.tsx         # Main entry point wiring sections & modals
-│   ├── components/
-│   │   ├── Navigation.tsx           # Sticky architectural header & mobile drawer
-│   │   ├── HeroSection.tsx          # First viewport with editorial typography & CTAs
-│   │   ├── CinematicThreeCanvas.tsx # WebGL Three.js 3D artifact with 2D blueprint fallback
-│   │   ├── AboutSection.tsx         # Identity narrative & 3 engineering pillars
-│   │   ├── SkillsSection.tsx        # Capability matrix with interactive project trace
-│   │   ├── ProjectsSection.tsx      # Case studies with category filters & metric badges
-│   │   ├── InteractiveDemos.tsx     # In-modal interactive sandboxes
-│   │   ├── CaseStudyModal.tsx       # Deep-dive case study inspector drawer
-│   │   ├── JourneySection.tsx       # Academic, research, & hackathon timeline
-│   │   ├── ContactSection.tsx       # Verified channels & honest mailto dispatcher
-│   │   ├── ResumeModal.tsx          # Structured printable CV sheet with PDF download
-│   │   ├── SourceCodeModal.tsx      # In-app Next.js source & config inspector
-│   │   └── Footer.tsx               # Colophon & back to top
-│   └── data/
-│       └── portfolioData.ts         # Central typed source of truth
-├── package.json
-├── tsconfig.json
-└── README.md
 ```
 
 ---

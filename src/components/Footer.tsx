@@ -17,12 +17,12 @@ export function Footer({ onScrollToTop }: FooterProps) {
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-[#929CAA]">
         {/* Moniker + Year */}
         <div className="flex items-center gap-3">
-          <span className="w-2 h-2 bg-[#C7FF3E] inline-block" />
-          <span className="text-[#F4F7FB] font-bold tracking-wider">SHIVAM.K</span>
+          <span className="w-2 h-2 rounded-full bg-[#C7FF3E] inline-block shadow-[0_0_8px_#C7FF3E]" />
+          <span className="text-[#F4F7FB] font-bold tracking-wider">S1h2i3v4a</span>
           <span className="text-[#697483]">© 2026</span>
           <span className="hidden md:inline text-white/10">|</span>
           <span className="hidden md:inline text-[#697483]">
-            PORTFOLIO DESIGN HACKATHON 2026 (SKILLINF)
+            SHIVAM KESHARI // PORTFOLIO DESIGN HACKATHON 2026
           </span>
         </div>
 

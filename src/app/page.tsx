@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { Project } from '@/data/portfolioData';
 import { Navigation } from '@/components/Navigation';
 import { HeroSection } from '@/components/HeroSection';
@@ -13,6 +14,18 @@ import { Footer } from '@/components/Footer';
 import { CaseStudyModal } from '@/components/CaseStudyModal';
 import { ResumeModal } from '@/components/ResumeModal';
 import { SourceCodeModal } from '@/components/SourceCodeModal';
+
+const QuantumViewerSection = dynamic(
+  () => import('@/components/QuantumViewerSection').then((mod) => mod.QuantumViewerSection),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-[520px] bg-[#090C11] border border-white/10 flex items-center justify-center">
+        <div className="w-10 h-10 rounded-full border-2 border-[#C7FF3E] border-t-transparent animate-spin" />
+      </div>
+    )
+  }
+);
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<string>('home');
@@ -33,7 +46,7 @@ export default function Home() {
 
   // Scroll spy to update active navigation indicator
   useEffect(() => {
-    const sections = ['home', 'about', 'skills', 'projects', 'journey', 'contact'];
+    const sections = ['home', 'showcase', 'about', 'skills', 'projects', 'journey', 'contact'];
     const handleScroll = () => {
       const scrollPos = window.scrollY + 240;
       for (const secId of sections) {
@@ -63,9 +76,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#07090D] text-[#E9EDF4] selection:bg-[#C7FF3E] selection:text-[#07090D] font-sans antialiased relative overflow-x-hidden">
-      {/* Subtle Architectural Blueprint Background Grid */}
+      {/* Subtle Architectural Cosmic Background Grid */}
       <div
-        className="pointer-events-none fixed inset-0 z-0 opacity-25"
+        className="pointer-events-none fixed inset-0 z-0 opacity-20"
         style={{
           backgroundImage: `
             linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
@@ -85,22 +98,32 @@ export default function Home() {
         onScrollToSection={scrollToSection}
       />
 
-      {/* Main Landmark Structure (Max 1440px with responsive clamp padding) */}
-      <main className="relative z-10 max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      {/* Main Landmark Structure */}
+      <main className="relative z-10 max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 space-y-6 sm:space-y-10">
+        {/* Panel 1: Hero Section with Astronaut */}
         <HeroSection
           reducedMotion={reducedMotion}
           onExploreWork={() => scrollToSection('projects')}
+          onWatchDemo={() => setResumeModalOpen(true)}
         />
 
-        <AboutSection />
+        {/* Panel 2: 3D Quantum Viewer / Showcase */}
+        <QuantumViewerSection reducedMotion={reducedMotion} />
 
-        <SkillsSection />
+        {/* Panel 3: About Me with 3D Holographic Bust */}
+        <AboutSection reducedMotion={reducedMotion} />
 
+        {/* Panel 4: My Skills with 3D Neural Constellation */}
+        <SkillsSection reducedMotion={reducedMotion} />
+
+        {/* Panel 5: My Projects with 4 Cinematic Floating Cards */}
         <ProjectsSection onOpenCaseStudy={(proj) => setActiveCaseStudy(proj)} />
 
-        <JourneySection />
+        {/* Panel 6: My Journey with 3D Holographic Trophy */}
+        <JourneySection reducedMotion={reducedMotion} />
 
-        <ContactSection />
+        {/* Panel 7: Get In Touch with 3D Holographic Envelope */}
+        <ContactSection reducedMotion={reducedMotion} />
       </main>
 
       {/* Footer Colophon */}
